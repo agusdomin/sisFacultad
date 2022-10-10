@@ -44,4 +44,64 @@ public class Carrera {
     public int getOptativas(){
         return this.nOptativas;
     }
+    // Parte de gestion de alumnos
+    public void inscribirAlumno(Alumno alumno){
+        if(!alumnos.contains(alumno)){
+            this.alumnos.add(alumno);
+        }else{
+            System.out.println("El alumno ya esta inscripto a esta carrera");
+        }
+    }
+    public void borrarAlumno(Alumno alumno){
+        if(alumnos.contains(alumno)){
+            this.alumnos.remove(alumno);
+        }else{
+            System.out.println("El alumno no esta inscripto a esta carrera");
+        }
+    }
+    public ArrayList<Alumno> getAllAlumno(){
+        return this.alumnos;
+    }
+    public Alumno getAlumno(int doc){
+        for(int i=0;i<alumnos.size();i++){
+            if(this.alumnos.get(i).getDocumento()==doc){
+                return alumnos.get(i);       
+            }
+        }
+        return null;
+    }
+    
+    // Parte de gestion de materias
+    public boolean isMateriaContained(Materia materia){
+        //Verifico que la materia no existe en ningun cuatri
+        for (int i = 0; i < materias.size(); i++) {
+            if(materias.get(i).contains(materia)){
+                return true;
+            }            
+        }
+        return false;
+    }
+    public int getMateriaCuatrimestre(Materia materia){
+        for (int i = 0; i < materias.size(); i++) {
+            if(materias.get(i).contains(materia)){
+                return i;
+            }           
+        }
+        return 0;
+    }
+    public void addMateria(Materia materia, int cuatrimestre){    
+        if(!isMateriaContained(materia)){
+            //Agrego la materia al cuatri requerido
+            this.materias.get(cuatrimestre).add(materia);
+        }
+    }
+    
+    public void borrarMateria(Materia materia){
+        this.materias.get(getMateriaCuatrimestre(materia)).remove(materia);
+    }
+
+    public ArrayList<ArrayList<Materia>> getAllMaterias(){
+        return this.materias;
+    }
+    public void getMateria(){}    
 }

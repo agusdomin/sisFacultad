@@ -1,9 +1,11 @@
 package integrador.sisFacultad.app.models;
 
+import java.util.ArrayList;
+
 public class Materia {
     private int id;
     private String nombre;
-    private Materia correlatividades;
+    private ArrayList<Materia> correlatividades;
     
     public Materia(String nombre,int id){   
         this.nombre=nombre;
@@ -22,5 +24,27 @@ public class Materia {
     }
     public String getNombre(){
         return this.nombre;
+    }
+    public void addCorrelativa(Materia materia){
+        this.correlatividades.add(materia);
+    }
+    public ArrayList<Materia> getAllCorrelativa(){
+        return this.correlatividades;
+    }
+    public boolean isCorrelativa(Materia materia){
+        if(this.correlatividades.contains(materia)){
+            return true;
+        }else{
+            return false;
+        }   
+    }
+    public Materia getCorrelativa(int id){
+        for(int i=0;i<correlatividades.size();i++){
+            if(correlatividades.get(i).getId()==id){
+                return correlatividades.get(i);
+            }
+        }
+        return null;
+    
     }
 }

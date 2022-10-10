@@ -5,7 +5,8 @@ public class Cursada {
     private int notaParcial;
     private int notaFinal;
     
-    public Cursada( int notaParcial,int notaFinal){
+    public Cursada(Materia materia, int notaParcial,int notaFinal){
+        this.materia=materia;
         this.notaFinal=notaFinal;
         this.notaParcial=notaParcial;
     }
