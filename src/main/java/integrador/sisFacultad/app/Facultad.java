@@ -8,7 +8,8 @@ public class Facultad {
     private ArrayList<Alumno> inscriptos;
     private ArrayList<PlandeEstudio> planes;
     private ArrayList<Carrera> carreras;
-
+    private ArrayList<Alumno> alumnos;
+    
     public Facultad(){}
     
     // Parte de gestion de inscriptos
@@ -19,6 +20,7 @@ public class Facultad {
             System.out.println("El alumno ya esta inscripto a esta carrera");
         }
     }
+    
     public void borrarInscripto(Alumno alumno){
         if(inscriptos.contains(alumno)){
             this.inscriptos.remove(alumno);
@@ -48,5 +50,32 @@ public class Facultad {
     
     public ArrayList<Carrera> getAllCarreras(){
         return this.carreras;
+    }
+    
+    // Parte de gestion de alumnos
+    public void inscribirAlumno(Alumno alumno){
+        if(!alumnos.contains(alumno)){
+            this.alumnos.add(alumno);
+        }else{
+            System.out.println("El alumno ya esta inscripto a esta carrera");
+        }
+    }
+    public void borrarAlumno(Alumno alumno){
+        if(alumnos.contains(alumno)){
+            this.alumnos.remove(alumno);
+        }else{
+            System.out.println("El alumno no esta inscripto a esta carrera");
+        }
+    }
+    public ArrayList<Alumno> getAllAlumno(){
+        return this.alumnos;
+    }
+    public Alumno getAlumno(int doc){
+        for(int i=0;i<alumnos.size();i++){
+            if(this.alumnos.get(i).getDocumento()==doc){
+                return alumnos.get(i);       
+            }
+        }
+        return null;
     }
 }

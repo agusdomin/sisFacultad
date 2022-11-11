@@ -7,7 +7,6 @@ public class Carrera {
     private String nombre;
     private PlandeEstudio plan;
     private int nOptativas;
-    private ArrayList<Alumno> alumnos;
     private ArrayList<ArrayList<Materia>> materias; //--> coleccion: misma que coleccion de cursadas(Alumno))
     
     public Carrera(int id,String nombre,PlandeEstudio plan, int optativas){
@@ -44,32 +43,7 @@ public class Carrera {
     public int getOptativas(){
         return this.nOptativas;
     }
-    // Parte de gestion de alumnos
-    public void inscribirAlumno(Alumno alumno){
-        if(!alumnos.contains(alumno)){
-            this.alumnos.add(alumno);
-        }else{
-            System.out.println("El alumno ya esta inscripto a esta carrera");
-        }
-    }
-    public void borrarAlumno(Alumno alumno){
-        if(alumnos.contains(alumno)){
-            this.alumnos.remove(alumno);
-        }else{
-            System.out.println("El alumno no esta inscripto a esta carrera");
-        }
-    }
-    public ArrayList<Alumno> getAllAlumno(){
-        return this.alumnos;
-    }
-    public Alumno getAlumno(int doc){
-        for(int i=0;i<alumnos.size();i++){
-            if(this.alumnos.get(i).getDocumento()==doc){
-                return alumnos.get(i);       
-            }
-        }
-        return null;
-    }
+    
     
     // Parte de gestion de materias
     public boolean isMateriaContained(Materia materia){

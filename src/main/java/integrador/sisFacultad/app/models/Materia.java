@@ -6,6 +6,7 @@ public class Materia {
     private int id;
     private String nombre;
     private ArrayList<Materia> correlatividades;
+    private Carrera carrera;
     
     public Materia(String nombre,int id){   
         this.nombre=nombre;
@@ -18,6 +19,9 @@ public class Materia {
     public int getId(){
         return this.id;
     }
+    public Carrera getCarrera(){
+        return this.carrera;
+    }
 
     public void setNombre(String nombre){
         this.nombre=nombre;
@@ -28,7 +32,7 @@ public class Materia {
     public void addCorrelativa(Materia materia){
         this.correlatividades.add(materia);
     }
-    public ArrayList<Materia> getAllCorrelativa(){
+    public ArrayList<Materia> getAllCorrelativas(){
         return this.correlatividades;
     }
     public boolean isCorrelativa(Materia materia){

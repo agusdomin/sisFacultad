@@ -8,6 +8,7 @@ public class Alumno
     private String nombre;
     private String apellido;
     private ArrayList<ArrayList<Materia>> cursadas;// --> coleccion: misma que coleccion de materias (Carrera)
+    private Carrera carrera;
     /* recorrer coleccion ejemplo
         for (int i = 0; i < aList.size(); i++) {
             for (int j = 0; j < aList.get(i).size(); j++) {
@@ -16,10 +17,11 @@ public class Alumno
             System.out.println();
         }
     */
-    public Alumno(int doc,String nombre,String apellido){
+    public Alumno(int doc,String nombre,String apellido,Carrera carrera){
         this.documento=doc;
         this.nombre=nombre;
         this.apellido=apellido;
+        this.carrera=carrera;
     }
 
     public int getDocumento(){
@@ -31,6 +33,9 @@ public class Alumno
     public String getNombre(){
         return this.nombre;
     }
+    public Carrera getCarrera(){
+        return this.carrera;
+    }
     public void setNombre(String nombre){
         this.nombre=nombre;
     }
@@ -39,6 +44,9 @@ public class Alumno
     }
     public void setApellido(String apellido){
         this.apellido=apellido;
+    }
+    public void setCarrera(Carrera carrera){
+        this.carrera=carrera;
     }
     // Parte de gestion de materias
     public boolean isCursando(Materia materia,int cuatrimestre){
@@ -49,12 +57,13 @@ public class Alumno
         return false;
     }
     public int getMateriaCuatrimestre(Materia materia){
-        for (int i = 0; i < cursadas.size(); i++) {
+        return this.carrera.getMateriaCuatrimestre(materia);
+        /*for (int i = 0; i < cursadas.size(); i++) {
             if(cursadas.get(i).contains(materia)){
                 return i;
             }           
         }
-        return 0;
+        return 0;*/
     }
     public void cursarMateria(Materia materia, int cuatrimestre){    
         if(!(isCursando(materia,cuatrimestre))){
