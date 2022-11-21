@@ -10,6 +10,9 @@ public class Cursada {
         this.notaFinal=notaFinal;
         this.notaParcial=notaParcial;
     }
+    public int getCuatrimestre(){
+        return this.materia.getCuatrimestre();
+    }
     public Materia getMateria(){
         return this.materia;
     }

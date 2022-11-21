@@ -51,7 +51,7 @@ public class Alumno
     // Parte de gestion de materias
     public boolean isCursando(Materia materia,int cuatrimestre){
         //Verifico que la materia no existe en ningun cuatri
-        if(cursadas.get(cuatrimestre).contains(materia)){
+        if(cursadas.get(materia.getCuatrimestre()).contains(materia)){1
             return true;
         }
         return false;

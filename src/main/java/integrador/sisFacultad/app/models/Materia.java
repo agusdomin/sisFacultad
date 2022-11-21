@@ -50,6 +50,9 @@ public class Materia {
             }
         }
         return null;
+    }
     
+    public int getCuatrimestre(){
+        return this.carrera.getMateriaCuatrimestre(this);
     }
 }
