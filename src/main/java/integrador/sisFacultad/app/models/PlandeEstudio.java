@@ -14,6 +14,7 @@ public abstract class PlandeEstudio {
         this.cuatPrevios=cuatPrevios;
         this.verficarFinales=verficarFinales;
     }
+    
     public String getDescripcion(){return this.descripcion;}
     public int getId(){return this.id;}
     
@@ -30,8 +31,9 @@ public abstract class PlandeEstudio {
     public boolean verificarCorrelativas( ArrayList<Materia> correlativas,ArrayList<ArrayList<Materia>> cursadas){
         
         for (int i = 0; i < correlativas.size(); i++){
-        
-            if(!(cursadas.contains(correlativas[i]))){
+            int k = correlativas.get(i).ge
+            cursadas.get(correlativas.get(i)).contains
+            if(!(cursadas.get(correlativas.get(id)).contains(correlativas[i]))){
               System.out.println("La materia "++"no fue aprobada por el alumno")                ;
             }
             return false;

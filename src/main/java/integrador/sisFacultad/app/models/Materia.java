@@ -8,6 +8,7 @@ public class Materia {
     private ArrayList<Materia> correlatividades;
     private Carrera carrera;
     
+    
     public Materia(String nombre,int id){   
         this.nombre=nombre;
         this.id=id;

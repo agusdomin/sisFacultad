@@ -1,5 +1,8 @@
 package integrador.sisFacultad.app;
 
+import integrador.sisFacultad.app.models.Materia;
+import java.util.ArrayList;
+
 /**
  * Hello world!
  *
