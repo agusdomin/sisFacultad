@@ -48,14 +48,16 @@ public class Alumno
     public void setCarrera(Carrera carrera){
         this.carrera=carrera;
     }
+    
     // Parte de gestion de materias
     public boolean isCursando(Materia materia,int cuatrimestre){
         //Verifico que la materia no existe en ningun cuatri
-        if(cursadas.get(materia.getCuatrimestre()).contains(materia)){1
+        if(cursadas.get(materia.getCuatrimestre()).contains(materia)){
             return true;
         }
         return false;
     }
+    
     public int getMateriaCuatrimestre(Materia materia){
         return this.carrera.getMateriaCuatrimestre(materia);
         /*for (int i = 0; i < cursadas.size(); i++) {
@@ -65,6 +67,7 @@ public class Alumno
         }
         return 0;*/
     }
+    
     public void cursarMateria(Materia materia, int cuatrimestre){    
         if(!(isCursando(materia,cuatrimestre))){
             //Agrego la materia al cuatri requerido
