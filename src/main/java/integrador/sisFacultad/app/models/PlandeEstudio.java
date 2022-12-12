@@ -4,49 +4,69 @@ import java.util.ArrayList;
 
 public abstract class PlandeEstudio {
     private int id;
+    private String nombre;
     private String descripcion;
-    private boolean verficarFinales; //La utilizo para el metodo verificarCorrelativas
-    private int cuatPrevios; // La utilizo para el metodo verificarHistoria
+    private boolean verificarFinales; //La utilizo para el metodo verificarCorrelativas
+    private boolean verificarFinalesCorrelativos;
+    private int cuatPrevios=0; // La utilizo para el metodo verificarHistoria
     
-    public PlandeEstudio(int id,String descripcion,boolean verficarFinales, int cuatPrevios){
+    public PlandeEstudio(int id,String descripcion,String nombre,boolean verificarFinales, boolean verificarFinalesCorrelativos, int cuatPrevios){
         this.id=id;
+        this.nombre=nombre;
         this.descripcion=descripcion;
         this.cuatPrevios=cuatPrevios;
-        this.verficarFinales=verficarFinales;
+        this.verificarFinales=verificarFinales;
+        this.verificarFinalesCorrelativos=verificarFinalesCorrelativos;
     }
     
     public String getDescripcion(){return this.descripcion;}
     public int getId(){return this.id;}
     
     public final void verificarCondiciones(Materia materia, Alumno alumno){
-        ArrayList<ArrayList<Materia>> cursadas = alumno.getAllCursadas();
+        ArrayList<ArrayList<Cursada>> cursadas = alumno.getAllCursadas();
         ArrayList<Materia> correlativas = materia.getAllCorrelativas();
         
-        verificarCorrelativas(correlativas,cursadas);
-        if(necesitaVerificarHistoria()){ 
-            verificarHistoria(materia.getCarrera().getAllMaterias());
+        if(verificarCorrelativas(correlativas,cursadas));
+        if(this.verificarFinales){ 
+            verificarHistoria(materia.getCarrera().getAllMaterias(),cursadas);
         }
     }
     
-    public boolean verificarCorrelativas( ArrayList<Materia> correlativas,ArrayList<ArrayList<Materia>> cursadas){
-        
-        for (int i = 0; i < correlativas.size(); i++){
-            int k = correlativas.get(i).ge
-            cursadas.get(correlativas.get(i)).contains
-            if(!(cursadas.get(correlativas.get(id)).contains(correlativas[i]))){
-              System.out.println("La materia "++"no fue aprobada por el alumno")                ;
+    public Cursada buscarCursada(Materia materia){
+        //Faltaria datos de alumno
+        //Verificar si es necesario que la responsabildiad sea del Plan de estudio
+        return null;
+    }
+    
+    public boolean verificarCorrelativas( ArrayList<Materia> correlativas,ArrayList<ArrayList<Cursada>> cursadas){
+        int i=0;
+        boolean cumpleCond=true;
+        while((i<correlativas.size())&&(cumpleCond)){
+            Cursada cur = buscarCursada(correlativas.get(i));
+            
+            if(cur!=null){
+                if(verificarFinalesCorrelativos){
+                    if(!cur.isAprobada()){
+                        System.out.println("No puede anotarse porque no aprobo el final");
+                        cumpleCond=false;
+                    }   
+                }else{
+                    if(!cur.isRegular()){
+                        System.out.println("No puede anotarse porque no regularizo la cursada");
+                        cumpleCond=false;
+                    }   
+                }
             }
-            return false;
+            i++;
         }
         
-        return true;
-        
-    };
-    public boolean verificarHistoria(ArrayList<ArrayList<Materia>> historiaAcademica){
-        
-    };
-    public boolean necesitaVerificarHistoria(){ //hook -
-        return cuatPrevios != 0; //Si es igual a 0, no es necesario verificar la historia previa que no sean correlativas
+        if(cumpleCond){
+            System.out.println("Cumple con los requisitos de las correlativas");
+        }
+        return cumpleCond;
     };
     
+    public boolean verificarHistoria(ArrayList<ArrayList<Materia>> historiaAcademica,ArrayList<ArrayList<Cursada>> cursadas){
+        return true;
+    };
 }

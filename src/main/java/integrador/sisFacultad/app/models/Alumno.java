@@ -7,7 +7,7 @@ public class Alumno
     private int documento;
     private String nombre;
     private String apellido;
-    private ArrayList<ArrayList<Materia>> cursadas;// --> coleccion: misma que coleccion de materias (Carrera)
+    private ArrayList<ArrayList<Cursada>> cursadas;// --> coleccion: misma que coleccion de materias (Carrera)
     private Carrera carrera;
     /* recorrer coleccion ejemplo
         for (int i = 0; i < aList.size(); i++) {
@@ -69,10 +69,12 @@ public class Alumno
     }
     
     public void cursarMateria(Materia materia, int cuatrimestre){    
-        if(!(isCursando(materia,cuatrimestre))){
+        // TENGO QUE AGREGAR LA MATERIA A UNA NUEVA INSTANCIA DE CURSADA
+ // VERIFICAR SI ES NECESARIO LA RESPONSABILIDAD DE CURSAR MATERIA ACA EN ALUMNO       
+//        if(!(isCursando(materia,cuatrimestre))){
             //Agrego la materia al cuatri requerido
-            this.cursadas.get(cuatrimestre).add(materia);
-        }
+//            this.cursadas.get(cuatrimestre).add(materia);
+//        }
     }
     
     public void abandonarMateria(Materia materia){
@@ -82,7 +84,7 @@ public class Alumno
         }
     }
 
-    public ArrayList<ArrayList<Materia>> getAllCursadas(){
+    public ArrayList<ArrayList<Cursada>> getAllCursadas(){
         return this.cursadas;
     }
     public void getMateria(){}    

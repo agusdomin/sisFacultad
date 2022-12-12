@@ -31,5 +31,18 @@ public class Cursada {
     public int getFinal(){
         return this.notaFinal;
     }
-
+    public boolean isRegular(){
+        if(this.notaParcial>=6){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public boolean isAprobada(){
+        if(this.notaFinal>=4){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

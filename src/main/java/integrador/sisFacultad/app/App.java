@@ -1,16 +1,18 @@
 package integrador.sisFacultad.app;
 
-import integrador.sisFacultad.app.models.Materia;
-import java.util.ArrayList;
+import vistas.Home;
+import javax.swing.JFrame;
+import java.awt.*;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        final Home home=new Home();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                home.setVisible(true);
+            }
+        });
     }
 }
