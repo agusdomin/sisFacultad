@@ -8,10 +8,13 @@ public class Materia {
     private String nombre;
     private ArrayList<Materia> correlatividades;
     private Carrera carrera;
+    private int cuatrimestre;
         
-    public Materia(String nombre,int id){   
+    public Materia(String nombre,int id,int cuatrimestre,Carrera carrera){   
         this.nombre=nombre;
         this.id=id;
+        this.carrera=carrera;
+        this.cuatrimestre=cuatrimestre;
     }
 
     public void setId(int id){

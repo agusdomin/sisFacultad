@@ -2,8 +2,12 @@ package integrador.sisFacultad.app.models;
 
 public class Cursada {
     private Materia materia;
-    private int notaParcial;
-    private int notaFinal;
+    private int notaParcial=0;
+    private int notaFinal=0;
+    
+    public Cursada(Materia materia){
+        this.materia=materia;
+    }
     
     public Cursada(Materia materia, int notaParcial,int notaFinal){
         this.materia=materia;

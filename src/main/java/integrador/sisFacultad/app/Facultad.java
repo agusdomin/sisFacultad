@@ -5,10 +5,15 @@ import java.util.ArrayList;
 import integrador.sisFacultad.app.models.*;
 
 public class Facultad {
-    private ArrayList<Alumno> inscriptos;
+    /* "Inscriptos" refiere a personas inscriptas a la facultad pero no 
+    a carreras.
+    */
+    private ArrayList<Alumno> inscriptos; 
+    /* Inscriptos refiere a los inscriptos que cursan una carrera
+    */
+    private ArrayList<Alumno> alumnos;
     private ArrayList<PlandeEstudio> planes;
     private ArrayList<Carrera> carreras;
-    private ArrayList<Alumno> alumnos;
     
     public Facultad(){}
     
