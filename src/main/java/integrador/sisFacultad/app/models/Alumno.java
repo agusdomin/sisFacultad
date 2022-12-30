@@ -7,6 +7,7 @@ public class Alumno
     private int documento;
     private String nombre;
     private String apellido;
+    private int edad;
     private ArrayList<ArrayList<Cursada>> cursadas;// --> coleccion: misma que coleccion de materias (Carrera)
     private Carrera carrera;
     /* recorrer coleccion ejemplo
@@ -17,13 +18,13 @@ public class Alumno
             System.out.println();
         }
     */
-    public Alumno(int doc,String nombre,String apellido,Carrera carrera){
+    public Alumno(int doc,String nombre,String apellido,int edad,Carrera carrera){
         this.documento=doc;
         this.nombre=nombre;
         this.apellido=apellido;
         this.carrera=carrera;
     }
-    public Alumno(int doc,String nombre,String apellido){
+    public Alumno(int doc,String nombre,int edad,String apellido){
         this.documento=doc;
         this.nombre=nombre;
         this.apellido=apellido;
@@ -34,6 +35,12 @@ public class Alumno
     }
     public void setDocumento(int doc){
         this.documento=doc;
+    }
+    public int getEdad(){
+        return this.edad;
+    }
+    public void setEdad(int edad){
+        this.edad=edad;
     }
     public String getNombre(){
         return this.nombre;
@@ -70,9 +77,9 @@ public class Alumno
         // Iterar cursadas.get(materia.getCuatrimestre())
         // Para buscar si alguna cursada corresponde con la materia
         
-        for (int cursada = 0; cursada < cursadas.get(materia.getCuatrimestre()).size(); cursada++) {
-             if(cursadas.get(materia.getCuatrimestre()).get(cursada).getMateria()==materia){
-                 return cursadas.get(materia.getCuatrimestre()).get(cursada);
+        for (int cursada = 0; cursada < cursadas.get(materia.getCuatri()).size(); cursada++) {
+             if(cursadas.get(materia.getCuatri()).get(cursada).getMateria()==materia){
+                 return cursadas.get(materia.getCuatri()).get(cursada);
              }
          }
         
@@ -85,13 +92,13 @@ public class Alumno
           // Se agrega una nueva cursada a la materia requerida
           Cursada cursada = new Cursada(materia);
           //Agrego la cursada a la historia del alumno al cuatri requerido
-          this.cursadas.get(materia.getCuatrimestre()).add(cursada);
+          this.cursadas.get(materia.getCuatri()).add(cursada);
         }
         System.out.println("El alumno ya estaba cursando esta materia");
     }
     
     public void abandonarCursada(Materia materia){
-        int x=materia.getCuatrimestre();    
+        int x=materia.getCuatri();    
         Cursada cursada = getCursada(materia);
         if(cursada!=null){
             this.cursadas.get(x).remove(cursada);

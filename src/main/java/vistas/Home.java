@@ -118,19 +118,21 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PropuestaCarrerras panel = new PropuestaCarrerras(controler);
+        PropuestaCarrerras panel = new PropuestaCarrerras(controler,this);
         panel.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        RegistroInscripciones registro = new RegistroInscripciones(controler);
+        RegistroInscripciones registro = new RegistroInscripciones(controler,this);
         registro.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        GestiondePlanes registro = new GestiondePlanes(controler,this);
+        registro.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

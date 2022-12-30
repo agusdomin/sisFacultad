@@ -17,25 +17,16 @@ public class Materia {
         this.cuatrimestre=cuatrimestre;
     }
 
-    public void setId(int id){
-        this.id=id;
-    }
+    public void setId(int id){ this.id=id; }
+    public int getId(){ return this.id; }
+    public void setCuatri(int cuatrimestre){ this.cuatrimestre=cuatrimestre; }
+    public int getCuatri(){ return this.cuatrimestre; }
     
-    public int getId(){
-        return this.id;
-    }
-    
-    public Carrera getCarrera(){
-        return this.carrera;
-    }
+    public Carrera getCarrera(){ return this.carrera; }
 
-    public void setNombre(String nombre){
-        this.nombre=nombre;
-    }
+    public void setNombre(String nombre){ this.nombre=nombre; }
+    public String getNombre(){ return this.nombre; }
     
-    public String getNombre(){
-        return this.nombre;
-    }
     public void addCorrelativa(Materia materia){
         this.correlatividades.add(materia);
     }
@@ -57,9 +48,5 @@ public class Materia {
             }
         }
         return null;
-    }
-    
-    public int getCuatrimestre(){
-        return this.carrera.getMateriaCuatrimestre(this);
     }
 }

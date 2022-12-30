@@ -15,7 +15,7 @@ public class Cursada {
         this.notaParcial=notaParcial;
     }
     public int getCuatrimestre(){
-        return this.materia.getCuatrimestre();
+        return this.materia.getCuatri();
     }
     public Materia getMateria(){
         return this.materia;
