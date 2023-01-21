@@ -8,24 +8,37 @@ import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 
 import integrador.sisFacultad.app.Facultad;
+import java.awt.BorderLayout;
 
 public class Home extends javax.swing.JFrame {
-    private Facultad controler;
-
-    /**
-     * Creates new form Home
-     */
+    private Facultad controler = new Facultad();
+    PropuestaCarrerasPanel carrerras = new PropuestaCarrerasPanel();
+    RegistroInscripcionesPanel inscripciones = new RegistroInscripcionesPanel();
+    GestiondePlanes planes = new GestiondePlanes(controler,this);
+    
     public Home() {
         initComponents();
-        controler= new Facultad();
+        //controler= new Facultad();
         setResizable(false);
         this.setLocationRelativeTo(null);
+        contenedor.removeAll();
+        contenedor.add(carrerras, BorderLayout.CENTER);
+        contenedor.revalidate(); 
+        contenedor.repaint();
     }
     public Home(Facultad controler) {
         initComponents();
-        this.controler= controler;
+        //this.controler= controler;
         setResizable(false);
         this.setLocationRelativeTo(null);
+        
+        contenedor.removeAll();
+        contenedor.add(carrerras, BorderLayout.CENTER);
+        contenedor.revalidate(); 
+        contenedor.repaint();
+        if(carrerras.isVisible()){
+            botonCarrerras.setEnabled(false);
+        }
     }
 
     /**
@@ -39,62 +52,83 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botonCarrerras = new javax.swing.JButton();
+        botonInscripciones = new javax.swing.JButton();
+        botonPlanes = new javax.swing.JButton();
+        contenedor = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de gestion de facultad");
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(900, 480));
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sistema de gestion de Facultad");
 
-        jButton1.setText("Gestión de carreras");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonCarrerras.setText("Gestión de carrerras");
+        botonCarrerras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonCarrerrasActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Registro de inscripciones");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonInscripciones.setText("Registro de inscripciones");
+        botonInscripciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonInscripcionesActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Gestion de planes de estudio");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonPlanes.setText("Gestion de planes de estudio");
+        botonPlanes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonPlanesActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
+        contenedor.setLayout(contenedorLayout);
+        contenedorLayout.setHorizontalGroup(
+            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        contenedorLayout.setVerticalGroup(
+            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 396, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(66, 66, 66))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonInscripciones, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(botonCarrerras, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                                .addComponent(botonPlanes, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
-                .addComponent(jButton2)
-                .addGap(41, 41, 41)
-                .addComponent(jButton1)
-                .addGap(47, 47, 47)
-                .addComponent(jButton3)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonInscripciones)
+                    .addComponent(botonCarrerras)
+                    .addComponent(botonPlanes))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -103,43 +137,65 @@ public class Home extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PropuestaCarrerras panel = new PropuestaCarrerras(controler,this);
-        panel.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botonCarrerrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCarrerrasActionPerformed
+        
+        contenedor.removeAll();
+        
+        carrerras.setVisible(true);
+        contenedor.add(carrerras, BorderLayout.CENTER);
+        contenedor.revalidate(); 
+        
+        if(carrerras.isVisible()){
+        
+            botonCarrerras.setEnabled(false);
+            botonInscripciones.setEnabled(true);
+            botonPlanes.setEnabled(true);
+        }
+        
+    }//GEN-LAST:event_botonCarrerrasActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        RegistroInscripciones registro = new RegistroInscripciones(controler,this);
-        registro.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void botonInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInscripcionesActionPerformed
+        
+        contenedor.removeAll();
+        inscripciones.setVisible(true);
+        contenedor.add(inscripciones, BorderLayout.CENTER);
+        contenedor.revalidate(); 
+        
+        if(inscripciones.isVisible()){
+        
+            botonInscripciones.setEnabled(false);
+            botonCarrerras.setEnabled(true);
+            botonPlanes.setEnabled(true);
+        }
+        
+    }//GEN-LAST:event_botonInscripcionesActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botonPlanesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPlanesActionPerformed
         GestiondePlanes registro = new GestiondePlanes(controler,this);
         registro.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+        
+    }//GEN-LAST:event_botonPlanesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton botonCarrerras;
+    private javax.swing.JButton botonInscripciones;
+    private javax.swing.JButton botonPlanes;
+    private javax.swing.JPanel contenedor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

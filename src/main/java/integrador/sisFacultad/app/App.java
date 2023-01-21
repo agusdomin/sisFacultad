@@ -8,7 +8,9 @@ public class App
 {
     public static void main( String[] args )
     {
-        final Home home=new Home();
+        final Facultad facu=new Facultad();
+        final Home home=new Home(facu);
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 home.setVisible(true);
