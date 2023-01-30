@@ -5,13 +5,15 @@ import java.util.ArrayList;
 public class Carrera {
     private int id;
     private String nombre;
+    private String descripcion;
     private PlandeEstudio plan;
     private int nOptativas;
     private ArrayList<ArrayList<Materia>> materias; //--> coleccion: misma que coleccion de cursadas(Alumno))
     
-    public Carrera(int id,String nombre,PlandeEstudio plan, int optativas){
+    public Carrera(int id,String nombre,String descripcion,PlandeEstudio plan, int optativas){
         this.id=id;
         this.nombre=nombre;
+        this.descripcion=descripcion;
         this.nOptativas=optativas;
         this.plan=plan;
     }
@@ -31,11 +33,17 @@ public class Carrera {
     public int getId(){
         return this.id;
     }
-    public void setFinal(String nombre){
+    public void setNombre(String nombre){
         this.nombre=nombre;
     }
-    public String getFinal(){
+    public String getNombre(){
         return this.nombre;
+    }
+    public void setDescripcion(String descripcion){
+        this.descripcion=descripcion;
+    }
+    public String getDescripcion(){
+        return this.descripcion;
     }
     public void setOptativas(int optativas){
         this.nOptativas=optativas;
@@ -44,6 +52,10 @@ public class Carrera {
         return this.nOptativas;
     }
     
+    @Override
+    public String toString(){
+        return this.nombre;
+    }
     
     // Parte de gestion de materias
     public boolean isMateriaContained(Materia materia){

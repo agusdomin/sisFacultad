@@ -10,9 +10,17 @@ public class Facultad {
     /* Inscriptos refiere a los inscriptos que cursan una carrera */
     private ArrayList<Alumno> alumnos;
     private ArrayList<PlandeEstudio> planes;
-    private ArrayList<Carrera> carreras;
+    private ArrayList<Carrera> carreras = new ArrayList<Carrera>();
     
-    public Facultad(){}
+    public Facultad(){
+        PlandeEstudio plan1 = new PlandeEstudio(1,"Sin verificar finales, ni vorrelativos, ni cuatri previos","PlanA",false,false,0);
+        Carrera car1 = new Carrera(1,"Sistemas","es de grado",plan1,0);
+        Carrera car2 = new Carrera(2,"analista","es de pre grado",plan1,0);
+        Carrera car3 = new Carrera(3,"contador","es de grado",plan1,0);
+        this.carreras.add(car1); 
+        this.carreras.add(car2); 
+        this.carreras.add(car3); 
+    }
     
     // Parte de gestion de inscriptos
     public void inscribirPersona(Alumno alumno){

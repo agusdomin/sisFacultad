@@ -2,7 +2,7 @@ package integrador.sisFacultad.app.models;
 
 import java.util.ArrayList;
 
-public abstract class PlandeEstudio {
+public class PlandeEstudio {
     private int id;
     private String nombre;
     private String descripcion;
@@ -18,9 +18,10 @@ public abstract class PlandeEstudio {
         this.verificarFinales=verificarFinales;
         this.verificarFinalesCorrelativos=verificarFinalesCorrelativos;
     }
-    
+    public String getNombre(){return this.nombre;}
     public String getDescripcion(){return this.descripcion;}
     public int getId(){return this.id;}
+    
     
     public final void verificarCondiciones(Materia materia, Alumno alumno){
         ArrayList<ArrayList<Cursada>> cursadas = alumno.getAllCursadas();
@@ -34,7 +35,7 @@ public abstract class PlandeEstudio {
     
     public Cursada buscarCursada(Materia materia){
         //Faltaria datos de alumno
-        //Verificar si es necesario que la responsabildiad sea del Plan de estudio
+            //Verificar si es necesario que la responsabildiad sea del Plan de estudio
         return null;
     }
     
