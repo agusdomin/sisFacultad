@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vistas;
 
 import integrador.sisFacultad.app.Facultad;
@@ -10,18 +6,18 @@ import integrador.sisFacultad.app.Facultad;
  *
  * @author Agustin
  */
-public class FormularioInscripcionCarrerra extends javax.swing.JFrame {
+public class FormularioInscripcionCarrera extends javax.swing.JFrame {
     private Facultad controler;
     private RegistroInscripciones callback;
     
-    public FormularioInscripcionCarrerra() {
+    public FormularioInscripcionCarrera() {
         initComponents();
         controler= new Facultad();
         setResizable(false);
         this.setLocationRelativeTo(null);
         callback=new RegistroInscripciones(this.controler);
     }
-    public FormularioInscripcionCarrerra(Facultad controler,RegistroInscripciones callback){
+    public FormularioInscripcionCarrera(Facultad controler,RegistroInscripciones callback){
         initComponents();
         this.controler= new Facultad();
         this.callback=callback;
@@ -114,8 +110,8 @@ public class FormularioInscripcionCarrerra extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -4,9 +4,6 @@
  */
 package vistas;
 
-import javax.swing.JOptionPane;
-import javax.swing.JFrame;
-
 import integrador.sisFacultad.app.Facultad;
 import java.awt.BorderLayout;
 
