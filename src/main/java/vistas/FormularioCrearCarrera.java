@@ -8,21 +8,26 @@ import integrador.sisFacultad.app.Facultad;
 import integrador.sisFacultad.app.models.Carrera;
 import integrador.sisFacultad.app.models.PlandeEstudio;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListCellRenderer;
+
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
-public class FormularioCrearCarrera extends javax.swing.JFrame {
+public class FormularioCrearCarrera extends javax.swing.JFrame implements ActionListener{
     private Facultad controler;
     private boolean modificar = false;
-    private Carrera carrera_edicion = null;
+    private Carrera carrera_mod = null;
+    private PropuestaCarrerasPanel parent;
     
-    public FormularioCrearCarrera(Facultad controler) {
+    
+    public FormularioCrearCarrera(PropuestaCarrerasPanel parent,Facultad controler) {
         initComponents();
-        this.controler= new Facultad();
+        this.controler= controler;
+        this.parent=parent;
         setResizable(false);
         this.setLocationRelativeTo(null);
         jButton1.setText("Añadir carrera");
@@ -36,19 +41,19 @@ public class FormularioCrearCarrera extends javax.swing.JFrame {
         jComboBox1.setRenderer(new PlanesRenderer());
         
     }
-    public FormularioCrearCarrera(Facultad controler, Carrera carrera){
+    public FormularioCrearCarrera(PropuestaCarrerasPanel parent,Facultad controler, Carrera carrera){
         initComponents();
-        this.carrera_edicion = carrera;
-        this.controler= new Facultad();
+        this.parent=parent;
+        this.controler= controler;
         this.modificar=true;
+        this.carrera_mod=carrera;
+                
         setResizable(false);
         setLocationRelativeTo(null);
         jButton1.setText("Aceptar cambios");
         setVisible(true);
-        
         this.jTextField1.setText(carrera.getNombre());
         this.jTextArea1.setText(carrera.getDescripcion());
-        
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         jComboBox1.setModel(modelo);
         ArrayList<PlandeEstudio> planes = this.controler.getAllPlanes();
@@ -177,20 +182,19 @@ public class FormularioCrearCarrera extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Carrera carrera_nueva = new Carrera(
-            this.controler.getNewIDcarrera(),
-            jTextField1.getText(),
-            jTextArea1.getText(),
-            (PlandeEstudio)jComboBox1.getSelectedItem(),
-            Integer.parseInt(jTextField4.getText())
-        );
-        if(modificar){
-            
-            this.controler.modificarCarrera(carrera_edicion,carrera_nueva);
-            System.out.println("Se modificó la carrera correctamente");   
-        }else{
-            this.controler.addCarrera(carrera_nueva);
+        String nombre = jTextField1.getText();
+        //this.controler.getPlan
+        PlandeEstudio plan = (PlandeEstudio)jComboBox1.getSelectedItem();
+        String descripcion = jTextArea1.getText();
+        int optativas = Integer.parseInt(jTextField4.getText());
+        if (!modificar){
+            this.controler.addCarrera(nombre,descripcion,plan,optativas);
             System.out.println("Se añadio la carrera correctamente");   
+            this.parent.actualizarJList();
+        }else{
+            this.controler.modificarCarrera(carrera_mod,nombre,descripcion,plan,optativas);
+            System.out.println("Se modificó la carrera correctamente");   
+            this.parent.actualizarJList();
         }
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -213,6 +217,11 @@ public class FormularioCrearCarrera extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
 
 class PlanesRenderer extends BasicComboBoxRenderer {

@@ -25,30 +25,36 @@ public class PropuestaCarrerasPanel extends javax.swing.JPanel {
         setSize(885,396);
         setLocation(0,0);
         this.jList1.setModel(modelo);
-        
-        ArrayList<Carrera>   carreras =  this.controler.getAllCarreras();
-        carreras.forEach((carrera) -> {
-           modelo.addElement(carrera);
-        });/*
-        jList1.setModel(modelo);
-        */
         actualizarJList();
-       
-        
-        
     }
     
-    private void actualizarJList(){
-        this.jList1.setCellRenderer(new DefaultListCellRenderer(){
-            @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                if (renderer instanceof JLabel && value instanceof Carrera) {
-                    ((JLabel) renderer).setText(((Carrera) value).getNombre());
+    public void actualizarJList(){
+        try{
+            modelo = new DefaultListModel();
+            ArrayList<Carrera>   carreras =  this.controler.getAllCarreras();
+            carreras.forEach((carrera) -> {
+                modelo.addElement(carrera);
+            });
+            
+            this.jList1.setCellRenderer(new DefaultListCellRenderer(){                
+                @Override
+                public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                    Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                    if (renderer instanceof JLabel && value instanceof Carrera) {
+                        ((JLabel) renderer).setText(((Carrera) value).getNombre());
+                    }
+                    return renderer;
                 }
-                return renderer;
-            }
-        });
+            });
+            
+            this.jList1.setModel(modelo);
+            
+        }catch(Exception e){
+            System.out.println("no pasa nada");
+        }
+        
+       
+        
     };
 
    
@@ -230,12 +236,13 @@ public class PropuestaCarrerasPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Carrera carrera = this.controler.getCarrera((Carrera)this.modelo.get(jList1.getSelectedIndex())); 
-        FormularioCrearCarrera formulario = new FormularioCrearCarrera(this.controler,carrera);
+        Carrera carrera = this.controler.getCarrera((Carrera)this.modelo.get(jList1.getSelectedIndex()));
+        FormularioCrearCarrera formulario = new FormularioCrearCarrera(this,this.controler,carrera);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        FormularioCrearCarrera formulario = new FormularioCrearCarrera(this.controler);
+        FormularioCrearCarrera formulario = new FormularioCrearCarrera(this,this.controler);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged

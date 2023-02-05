@@ -17,6 +17,7 @@ public class Carrera {
         this.nOptativas=optativas;
         this.plan=plan;
     }
+    
 
     public void setPlan(PlandeEstudio plan){
         this.plan=plan;

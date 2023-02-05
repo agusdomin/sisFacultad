@@ -25,14 +25,18 @@ public class Facultad {
         this.carreras.add(car3); 
     }
     
-    public int getNewIDcarrera(){
+    private int getNewIDcarrera(){
         int id = carreras.size()+1;
         return id;
     }
     
-    public void modificarCarrera(Carrera vieja,Carrera nueva){
+    public void modificarCarrera(Carrera vieja, String nombre, String descripcion, PlandeEstudio plan, int optativas){
         int a = carreras.indexOf(vieja);
-        carreras.set(a, nueva);
+        vieja.setDescripcion(descripcion);
+        vieja.setNombre(nombre);
+        vieja.setOptativas(optativas);
+        vieja.setPlan(plan);
+        //carreras.set(a, nueva);
         System.out.println(carreras.toString());
     }
     
@@ -66,14 +70,24 @@ public class Facultad {
         return this.planes;
     }
     // Parte de gestion de carreras
-    public void addCarrera(Carrera carrera){
+    public void addCarrera(String nombre,String descripcion,PlandeEstudio plan,int optativas){
+        Carrera carrera = new Carrera(getNewIDcarrera(),nombre,descripcion,plan,optativas);
         this.carreras.add(carrera);
         System.out.println(carreras.toString());
     }
     public Carrera getCarrera(Carrera carrera){
         int a = carreras.indexOf(carrera);
-        System.out.println(a);
-        return carreras.get(a);
+        if(a>-1){
+            System.out.println("Se encontró la carrera en el array, indice: "+a);
+            return carreras.get(a);
+        }else{
+            System.out.println("No se encontró la carrera en el array, el indice es cualquiera");
+            return null;    
+        }
+        
+  //      this.carreras.forEach((car) -> {
+//            System.out.println(car.toString());
+        //});
         //carreras.forEach((car)->{
         //    if(car.getId()==carrera.getId()){
         //        return car; }  });
