@@ -1,5 +1,8 @@
 package integrador.sisFacultad.app.vistas;
 
+import integrador.sisFacultad.app.vistas.panels.RegistroInscripcionesPanel;
+import integrador.sisFacultad.app.vistas.panels.PropuestaCarrerasPanel;
+import integrador.sisFacultad.app.vistas.panels.GestionPlanesPanel;
 import integrador.sisFacultad.app.Facultad;
 import java.awt.BorderLayout;
 

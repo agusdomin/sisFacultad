@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
-import integrador.sisFacultad.app.vistas.PropuestaCarrerasPanel;
+import integrador.sisFacultad.app.vistas.panels.PropuestaCarrerasPanel;
 
 public class FormularioCarrera extends javax.swing.JFrame implements ActionListener{
     private Facultad controler;

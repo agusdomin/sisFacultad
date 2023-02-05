@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package integrador.sisFacultad.app.vistas;
+package integrador.sisFacultad.app.vistas.panels;
 
 import integrador.sisFacultad.app.Facultad;
 import integrador.sisFacultad.app.modelos.Carrera;

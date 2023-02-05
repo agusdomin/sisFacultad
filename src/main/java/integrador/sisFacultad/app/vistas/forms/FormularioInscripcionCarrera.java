@@ -1,7 +1,7 @@
 package integrador.sisFacultad.app.vistas.forms;
 
 import integrador.sisFacultad.app.Facultad;
-import integrador.sisFacultad.app.vistas.RegistroInscripcionesPanel;
+import integrador.sisFacultad.app.vistas.panels.RegistroInscripcionesPanel;
 
 /**
  *
