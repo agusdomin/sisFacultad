@@ -2,18 +2,63 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package vistas;
+package integrador.sisFacultad.app.vistas;
 
 import integrador.sisFacultad.app.Facultad;
+import integrador.sisFacultad.app.modelos.Carrera;
+import integrador.sisFacultad.app.modelos.PlandeEstudio;
+import java.awt.Component;
+import java.util.ArrayList;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
+import javax.swing.JList;
 
 public class GestionPlanesPanel extends javax.swing.JPanel {
     private Facultad controler;
+    private DefaultListModel modelo = new DefaultListModel();
+    
     public GestionPlanesPanel(Facultad controler) {
         initComponents();
         this.controler=controler;
         setSize(885,396);
         setLocation(0,0);
+        this.jList1.setModel(modelo);
+        actualizarJList();
     }
+    
+    
+    public void actualizarJList(){
+        
+        try{
+            modelo = new DefaultListModel();
+            ArrayList<PlandeEstudio>  planes =  this.controler.getAllPlanes();
+            planes.forEach((plan) -> {
+                modelo.addElement(plan);
+            });
+            
+            this.jList1.setCellRenderer(new DefaultListCellRenderer(){                
+                @Override
+                public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                    Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                    if (renderer instanceof JLabel && value instanceof PlandeEstudio) {
+                        ((JLabel) renderer).setText(((PlandeEstudio) value).getNombre());
+                    }
+                    return renderer;
+                }
+            });
+            
+            this.jList1.setModel(modelo);
+            
+              
+        }catch(Exception e){
+            System.out.println("no pasa nada");
+        }
+        
+       this.jList1.setSelectedIndex(0);
+        
+    };
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

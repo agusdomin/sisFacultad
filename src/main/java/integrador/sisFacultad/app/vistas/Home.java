@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package vistas;
+package integrador.sisFacultad.app.vistas;
 
 import integrador.sisFacultad.app.Facultad;
 import java.awt.BorderLayout;
@@ -15,7 +11,6 @@ public class Home extends javax.swing.JFrame {
     
     public Home() {
         initComponents();
-        //controler= new Facultad();
         setResizable(false);
         this.setLocationRelativeTo(null);
         contenedor.removeAll();

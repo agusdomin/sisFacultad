@@ -1,38 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package vistas;
+package integrador.sisFacultad.app.vistas.forms;
 
 import integrador.sisFacultad.app.Facultad;
-import integrador.sisFacultad.app.models.Carrera;
-import integrador.sisFacultad.app.models.PlandeEstudio;
+import integrador.sisFacultad.app.modelos.Carrera;
+import integrador.sisFacultad.app.modelos.PlandeEstudio;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
+import integrador.sisFacultad.app.vistas.PropuestaCarrerasPanel;
 
-public class FormularioCrearCarrera extends javax.swing.JFrame implements ActionListener{
+public class FormularioCarrera extends javax.swing.JFrame implements ActionListener{
     private Facultad controler;
     private boolean modificar = false;
     private Carrera carrera_mod = null;
     private PropuestaCarrerasPanel parent;
     
     
-    public FormularioCrearCarrera(PropuestaCarrerasPanel parent,Facultad controler) {
+    public FormularioCarrera(PropuestaCarrerasPanel parent,Facultad controler) {
         initComponents();
         this.controler= controler;
         this.parent=parent;
-        setResizable(false);
-        this.setLocationRelativeTo(null);
-        jButton1.setText("Añadir carrera");
-        setVisible(true);
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        setVisible(true);
+        setLocationRelativeTo(null);
+        
+        jButton1.setText("Añadir carrera");
         jComboBox1.setModel(modelo);
         ArrayList<PlandeEstudio> planes = this.controler.getAllPlanes();
         planes.forEach((plan) -> {
@@ -41,27 +41,32 @@ public class FormularioCrearCarrera extends javax.swing.JFrame implements Action
         jComboBox1.setRenderer(new PlanesRenderer());
         
     }
-    public FormularioCrearCarrera(PropuestaCarrerasPanel parent,Facultad controler, Carrera carrera){
+    public FormularioCarrera(PropuestaCarrerasPanel parent,Facultad controler, Carrera carrera){
         initComponents();
         this.parent=parent;
         this.controler= controler;
         this.modificar=true;
         this.carrera_mod=carrera;
-                
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
-        jButton1.setText("Aceptar cambios");
         setVisible(true);
+        
+        
+        jButton1.setText("Aceptar cambios");
         this.jTextField1.setText(carrera.getNombre());
         this.jTextArea1.setText(carrera.getDescripcion());
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        this.jTextField4.setText(Integer.toString(carrera.getOptativas()));
+        
         jComboBox1.setModel(modelo);
         ArrayList<PlandeEstudio> planes = this.controler.getAllPlanes();
         planes.forEach((plan) -> {
            modelo.addElement(plan);
         });
         jComboBox1.setRenderer(new PlanesRenderer());
-        this.jTextField4.setText(Integer.toString(carrera.getOptativas()));
+        
     }
     
     @SuppressWarnings("unchecked")

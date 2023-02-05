@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package vistas;
+package integrador.sisFacultad.app.vistas;
 
+import integrador.sisFacultad.app.vistas.forms.FormularioCarrera;
 import integrador.sisFacultad.app.Facultad;
-import integrador.sisFacultad.app.models.Carrera;
+import integrador.sisFacultad.app.modelos.Carrera;
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.DefaultListCellRenderer;
@@ -26,9 +27,11 @@ public class PropuestaCarrerasPanel extends javax.swing.JPanel {
         setLocation(0,0);
         this.jList1.setModel(modelo);
         actualizarJList();
+        
     }
     
     public void actualizarJList(){
+        
         try{
             modelo = new DefaultListModel();
             ArrayList<Carrera>   carreras =  this.controler.getAllCarreras();
@@ -49,11 +52,12 @@ public class PropuestaCarrerasPanel extends javax.swing.JPanel {
             
             this.jList1.setModel(modelo);
             
+              
         }catch(Exception e){
             System.out.println("no pasa nada");
         }
         
-       
+       this.jList1.setSelectedIndex(0);
         
     };
 
@@ -194,7 +198,7 @@ public class PropuestaCarrerasPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -237,12 +241,12 @@ public class PropuestaCarrerasPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Carrera carrera = this.controler.getCarrera((Carrera)this.modelo.get(jList1.getSelectedIndex()));
-        FormularioCrearCarrera formulario = new FormularioCrearCarrera(this,this.controler,carrera);
+        FormularioCarrera formulario = new FormularioCarrera(this,this.controler,carrera);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        FormularioCrearCarrera formulario = new FormularioCrearCarrera(this,this.controler);
+        FormularioCarrera formulario = new FormularioCarrera(this,this.controler);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged

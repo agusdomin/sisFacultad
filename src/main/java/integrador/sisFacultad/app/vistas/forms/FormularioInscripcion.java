@@ -1,23 +1,26 @@
-package vistas;
+package integrador.sisFacultad.app.vistas.forms;
 
 import integrador.sisFacultad.app.Facultad;
-import integrador.sisFacultad.app.models.Carrera;
+import integrador.sisFacultad.app.modelos.Carrera;
+import javax.swing.JFrame;
 
 public class FormularioInscripcion extends javax.swing.JFrame {
     private Facultad controler;
     
-    public FormularioInscripcion() {
+    public FormularioInscripcion(Facultad controler) {
         initComponents();
-        controler= new Facultad();
+        this.controler=controler;
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
         this.setLocationRelativeTo(null);
-//        callback=new RegistroInscripciones(this.controler);
     }
+    
     public FormularioInscripcion(Facultad controler, Carrera carrera){
         initComponents();
-        this.controler= new Facultad();
+        this.controler=controler;
         setResizable(false);
-        this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
     @SuppressWarnings("unchecked")

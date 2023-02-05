@@ -1,4 +1,4 @@
-package integrador.sisFacultad.app.models;
+package integrador.sisFacultad.app.modelos;
 
 import java.util.ArrayList;
 

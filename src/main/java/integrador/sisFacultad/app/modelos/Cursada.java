@@ -1,4 +1,4 @@
-package integrador.sisFacultad.app.models;
+package integrador.sisFacultad.app.modelos;
 
 public class Cursada {
     private Materia materia;

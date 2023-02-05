@@ -1,26 +1,31 @@
-package vistas;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package integrador.sisFacultad.app.vistas.forms;
 
 import integrador.sisFacultad.app.Facultad;
+import integrador.sisFacultad.app.vistas.RegistroInscripcionesPanel;
 
 /**
  *
  * @author Agustin
  */
-public class FormularioInscripcionCarrera extends javax.swing.JFrame {
+public class FormularioInscripcionMateria extends javax.swing.JFrame {
     private Facultad controler;
-    private RegistroInscripciones callback;
+    private RegistroInscripcionesPanel parent;
     
-    public FormularioInscripcionCarrera() {
+    public FormularioInscripcionMateria() {
         initComponents();
         controler= new Facultad();
         setResizable(false);
         this.setLocationRelativeTo(null);
-        callback=new RegistroInscripciones(this.controler);
+        
     }
-    public FormularioInscripcionCarrera(Facultad controler,RegistroInscripciones callback){
+    public FormularioInscripcionMateria(Facultad controler,RegistroInscripcionesPanel parent){
         initComponents();
         this.controler= new Facultad();
-        this.callback=callback;
+        this.parent=parent;
         setResizable(false);
         this.setLocationRelativeTo(null);
     }
@@ -44,7 +49,7 @@ public class FormularioInscripcionCarrera extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel3.setText("Carrerras disponibles");
+        jLabel3.setText("Materia disponibles para cursar");
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -53,7 +58,7 @@ public class FormularioInscripcionCarrera extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
-        jLabel4.setText("Datos de la carrera");
+        jLabel4.setText("Datos de la materia");
 
         jButton1.setText("Inscribirse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -70,9 +75,9 @@ public class FormularioInscripcionCarrera extends javax.swing.JFrame {
         });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Formulario de inscripcion a carrera");
+        jLabel2.setText("Formulario de inscripcion a materia");
 
-        jLabel1.setText("Inscripto:");
+        jLabel1.setText("Alumno:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,7 +88,9 @@ public class FormularioInscripcionCarrera extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
@@ -92,9 +99,7 @@ public class FormularioInscripcionCarrera extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(67, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jButton1))
@@ -110,8 +115,8 @@ public class FormularioInscripcionCarrera extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +133,7 @@ public class FormularioInscripcionCarrera extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.callback.setVisible(true);
+        
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

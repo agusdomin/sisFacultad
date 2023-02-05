@@ -1,8 +1,10 @@
 package integrador.sisFacultad.app;
 
+import integrador.sisFacultad.app.modelos.Alumno;
+import integrador.sisFacultad.app.modelos.Carrera;
+import integrador.sisFacultad.app.modelos.PlandeEstudio;
 import java.util.ArrayList;
 
-import integrador.sisFacultad.app.models.*;
 
 public class Facultad {
     /* "Inscriptos" refiere a personas inscriptas a la facultad pero no a carreras. */
