@@ -5,17 +5,64 @@
 package integrador.sisFacultad.app.vistas.panels;
 
 import integrador.sisFacultad.app.Facultad;
+import integrador.sisFacultad.app.modelos.Alumno;
+import integrador.sisFacultad.app.modelos.Carrera;
+import java.awt.Component;
+import java.util.ArrayList;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
+import javax.swing.JList;
 
 public class RegistroInscripcionesPanel extends javax.swing.JPanel {
     private Facultad controler;
+    private DefaultListModel modelo_alumnos = new DefaultListModel();
+    private DefaultListModel modelo_inscriptos = new DefaultListModel();
     
     public RegistroInscripcionesPanel(Facultad controler) {
         initComponents();
         this.controler=controler;
         setSize(885,396);
         setLocation(0,0);
+        this.jList1.setModel(modelo_alumnos);
+        this.jList2.setModel(modelo_inscriptos);
+        if(jTabbedPane1.getSelectedIndex()==0){
+            actualizarJList(jList1,modelo_alumnos);
+        }else{
+            actualizarJList(jList2,modelo_inscriptos);
+        }
     }
 
+    public void actualizarJList(JList lista, DefaultListModel modelo){
+        
+        try{
+            
+            ArrayList<Alumno> alumnos =  this.controler.getAllInscriptos();
+            alumnos.forEach((alumno) -> {
+                modelo.addElement(alumno);
+            });
+            
+            lista.setCellRenderer(new DefaultListCellRenderer(){                
+                @Override
+                public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                    Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                    if (renderer instanceof JLabel && value instanceof Alumno) {
+                        ((JLabel) renderer).setText(((Alumno) value).getNombre());
+                    }
+                    return renderer;
+                }
+            });
+            
+            lista.setModel(modelo);
+            
+              
+        }catch(Exception e){
+            System.out.println("no pasa nada");
+        }
+        
+       lista.setSelectedIndex(0);
+        
+    };
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -36,6 +83,12 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(885, 396));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -154,7 +207,7 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //FormularioInscripcionCarrerra formulario = new FormularioInscripcionCarrerra(this.controler,this);
-        //formulario.setVisible(true);
+        //formulario.setVi  sible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -168,6 +221,14 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
         //formulario.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        if(jTabbedPane1.getSelectedIndex()==0){
+            actualizarJList(jList1,modelo_alumnos);
+        }else{
+            actualizarJList(jList2,modelo_inscriptos);
+        }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

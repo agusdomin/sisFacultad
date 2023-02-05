@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class Facultad {
     /* "Inscriptos" refiere a personas inscriptas a la facultad pero no a carreras. */
-    private ArrayList<Alumno> inscriptos; 
+    private ArrayList<Alumno> inscriptos = new ArrayList<Alumno>(); 
     /* Inscriptos refiere a los inscriptos que cursan una carrera */
-    private ArrayList<Alumno> alumnos;
-    private ArrayList<PlandeEstudio> planes = new ArrayList<PlandeEstudio>();;
+    private ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
+    private ArrayList<PlandeEstudio> planes = new ArrayList<PlandeEstudio>();
     private ArrayList<Carrera> carreras = new ArrayList<Carrera>();
     
     public Facultad(){
@@ -25,6 +25,11 @@ public class Facultad {
         this.carreras.add(car1);    
         this.carreras.add(car2); 
         this.carreras.add(car3); 
+        
+        Alumno alu1 = new Alumno(111,"agustin",24,"dominguez");
+        Alumno alu2 = new Alumno(222,"Sebastian",22,"rodriguez");
+        this.alumnos.add(alu1);
+        this.inscriptos.add(alu2);
     }
     
     private int getNewIDcarrera(){
@@ -33,12 +38,10 @@ public class Facultad {
     }
     
     public void modificarCarrera(Carrera vieja, String nombre, String descripcion, PlandeEstudio plan, int optativas){
-        int a = carreras.indexOf(vieja);
         vieja.setDescripcion(descripcion);
         vieja.setNombre(nombre);
         vieja.setOptativas(optativas);
         vieja.setPlan(plan);
-        //carreras.set(a, nueva);
         System.out.println(carreras.toString());
     }
     
