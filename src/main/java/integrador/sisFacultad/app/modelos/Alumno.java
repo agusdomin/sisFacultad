@@ -2,8 +2,15 @@ package integrador.sisFacultad.app.modelos;
 
 import java.util.ArrayList;
 
-public class Alumno
-{
+
+/*
+        Se entiende por "Inscripto" a aquella persona que no esta inscripta 
+        a una carrera, pero si esta inscripta a la facultad.
+        Y por alumno a aquel inscripto a una carrera.
+*/
+
+public class Alumno{
+    
     private int documento;
     private String nombre;
     private String apellido;
