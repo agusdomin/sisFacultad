@@ -233,7 +233,7 @@ class PlanesRenderer extends BasicComboBoxRenderer {
     public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
         if (renderer instanceof JLabel && value instanceof PlandeEstudio) {
-            ((JLabel) renderer).setText(((PlandeEstudio) value).getNombre());
+            ((JLabel) renderer).setText(((PlandeEstudio) value).getLetra());
         }
         return renderer;
     }

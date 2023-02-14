@@ -2,6 +2,8 @@ package integrador.sisFacultad.app.vistas.panels;
 
 import integrador.sisFacultad.app.Facultad;
 import integrador.sisFacultad.app.modelos.Alumno;
+import integrador.sisFacultad.app.vistas.forms.FormularioInscripcion;
+import integrador.sisFacultad.app.vistas.forms.FormularioInscripcionCarrera;
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.DefaultListCellRenderer;
@@ -10,82 +12,90 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 
 public class RegistroInscripcionesPanel extends javax.swing.JPanel {
-    
-    /*
-        Se entiende por "Inscripto" a aquella persona que no esta inscripta 
-        a una carrera, pero si esta inscripta a la facultad.
-        Y por alumno a aquel inscripto a una carrera.
-    */
+    /* Se entiende por "Inscripto" a aquella persona que no esta inscripta 
+    a una carrera, pero si esta inscripta a la facultad.
+    Y por alumno a aquel inscripto a una carrera. */
     
     private Facultad controler;
     private DefaultListModel modelo_alumnos = new DefaultListModel();
     private DefaultListModel modelo_inscriptos = new DefaultListModel();
+    
     
     public RegistroInscripcionesPanel(Facultad controler) {
         initComponents();
         this.controler=controler;
         setSize(885,396);
         setLocation(0,0);
-        this.jList1.setModel(modelo_alumnos);
-        this.jList2.setModel(modelo_inscriptos);
-        actualizarJList();
+        this.jList1.setModel(modelo_inscriptos);
+        this.jList2.setModel(modelo_alumnos);
         
+        actualizarJList();        
     }
-
-    public void actualizarJList(){
-        
+    
+    
+    public void actualizarJListAlumnos(){
         try{
-            // Para Tab de Alumnos en el Panel de Registro de inscriptos
-            if(jTabbedPane1.getSelectedIndex()==0){
-                modelo_alumnos = new DefaultListModel();
-                ArrayList<Alumno> alumnos =  this.controler.getAllAlumno();
-                alumnos.forEach((alumno) -> {
-                    modelo_alumnos.addElement(alumno);
-                });
-                jList1.setCellRenderer(new DefaultListCellRenderer(){                
-                    @Override
-                    public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                        Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                        if (renderer instanceof JLabel && value instanceof Alumno) {
-                            ((JLabel) renderer).setText(((Alumno) value).getNombre());
-                        }
-                        return renderer;
+            modelo_alumnos = new DefaultListModel();
+            ArrayList<Alumno> alumnos =  this.controler.getAllAlumno();
+            alumnos.forEach((alumno) -> {
+                modelo_alumnos.addElement(alumno);
+            });
+            jList2.setCellRenderer(new DefaultListCellRenderer(){                
+                @Override
+                public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                    Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                    if (renderer instanceof JLabel && value instanceof Alumno) {
+                        ((JLabel) renderer).setText(((Alumno) value).getNombre());
                     }
-                });
-                 jList1.setModel(modelo_alumnos);
-                 jList1.setSelectedIndex(0);
-                 
-            }else{ // Para Tab de Inscriptos en el Panel de Registro de inscriptos
-                
-                modelo_inscriptos = new DefaultListModel();
-                ArrayList<Alumno> inscriptos =  this.controler.getAllInscriptos();
-                inscriptos.forEach((inscripto) -> {
-                    modelo_inscriptos.addElement(inscripto);
-                });
-                jList2.setCellRenderer(new DefaultListCellRenderer(){                
-                    @Override
-                    public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                        Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                        if (renderer instanceof JLabel && value instanceof Alumno) {
-                            ((JLabel) renderer).setText(((Alumno) value).getNombre());
-                        }
-                        return renderer;
+                    return renderer;
                 }
             });
-                jList2.setModel(modelo_inscriptos);
-                jList2.setSelectedIndex(0);
-            }
-        }catch(Exception e){
-            System.out.println("no pasa nada");
+            jList2.setModel(modelo_alumnos);
+            jList2.setSelectedIndex(0);
+        }catch (ArrayIndexOutOfBoundsException e){
+            jList2.setSelectedIndex(0);
+            System.out.println("n");
         }
-        
-       
-        
+    }
+    
+    public void actualizarJListInscriptos(){
+        try{
+            modelo_inscriptos = new DefaultListModel();
+            ArrayList<Alumno> inscriptos =  this.controler.getAllInscriptos();
+            inscriptos.forEach((inscripto) -> {
+                modelo_inscriptos.addElement(inscripto);
+            });
+            jList1.setCellRenderer(new DefaultListCellRenderer(){                
+                @Override
+                public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                    Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                    if (renderer instanceof JLabel && value instanceof Alumno) {
+                        ((JLabel) renderer).setText(((Alumno) value).getNombre());
+                    }
+                    return renderer;
+                }
+            });
+            jList1.setModel(modelo_inscriptos);
+            jList1.setSelectedIndex(0);
+        }catch (ArrayIndexOutOfBoundsException e){
+            jList1.setSelectedIndex(0);
+            System.out.println("n");
+        }
+    }
+    
+    public void actualizarJList(){
+        // Para Tab de Alumnos en el Panel de Registro de inscriptos
+        //if(jTabbedPane1.getSelectedIndex()==1){
+        actualizarJListAlumnos();
+        //}else{ // Para Tab de Inscriptos en el Panel de Registro de inscriptos
+        actualizarJListInscriptos();
+        //}
     };
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -118,7 +128,17 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setPreferredSize(new java.awt.Dimension(885, 396));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -133,6 +153,16 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        jList1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jList1PropertyChange(evt);
+            }
+        });
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
         });
         jScrollPane1.setViewportView(jList1);
 
@@ -250,6 +280,11 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList2.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList2ValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(jList2);
 
         jLabel3.setText("Datos del alumno");
@@ -291,6 +326,11 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
         jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButton4.setText("Modificar datos");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -339,15 +379,12 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel6)
@@ -361,30 +398,31 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel10))
-                        .addGap(18, 18, 18)
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton5)
-                            .addComponent(jButton4))
-                        .addGap(32, 32, 32))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap(17, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton5)
+                    .addComponent(jButton4))
+                .addGap(32, 32, 32))
         );
 
         jTabbedPane1.addTab("Alumnos cursando", jPanel3);
 
         add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 72, 820, 300));
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registro de inscripciones");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //FormularioInscripcionCarrerra formulario = new FormularioInscripcionCarrerra(this.controler,this);
-        //formulario.setVi  sible(true);
+        Alumno inscripto = this.controler.getInscripto((Alumno)this.modelo_inscriptos.get(jList1.getSelectedIndex()));
+        FormularioInscripcionCarrera formulario = new FormularioInscripcionCarrera(this,this.controler,inscripto);
+        formulario.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -394,14 +432,43 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //FormularioInscripcion formulario = new FormularioInscripcion(this.controler,this);
-        //formulario.setVisible(true);
-        
+        FormularioInscripcion formulario = new FormularioInscripcion(this,this.controler);        
+        formulario.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
-        actualizarJList();
+        //actualizarJList();
     }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        if(!this.modelo_inscriptos.isEmpty()){
+            Alumno inscripto = (Alumno)this.modelo_inscriptos.get(jList1.getSelectedIndex()); 
+            jLabel25.setText(inscripto.getNombre());
+            jLabel28.setText(inscripto.getApellido());
+            jLabel26.setText(Integer.toString(inscripto.getDocumento()));
+            jLabel31.setText(inscripto.getFechaInscripcion());    
+        }
+        
+    }//GEN-LAST:event_jList1ValueChanged
+
+    private void jList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList2ValueChanged
+        if(!this.modelo_alumnos.isEmpty()){
+            Alumno alumno = (Alumno)this.modelo_alumnos.get(jList2.getSelectedIndex()); 
+            jLabel8.setText(alumno.getNombre());
+            jLabel11.setText(alumno.getApellido());
+            jLabel9.setText(Integer.toString(alumno.getDocumento()));
+            jLabel10.setText(alumno.getCarrera().toString());
+            jLabel13.setText(alumno.getFechaCursada());
+        }
+    }//GEN-LAST:event_jList2ValueChanged
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jList1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jList1PropertyChange
+
+    }//GEN-LAST:event_jList1PropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -410,7 +477,7 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

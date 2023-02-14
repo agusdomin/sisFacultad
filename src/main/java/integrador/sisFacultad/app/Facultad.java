@@ -1,5 +1,6 @@
 package integrador.sisFacultad.app;
 
+import integrador.sisFacultad.app.exepciones.inscriptoRegistradoException;
 import integrador.sisFacultad.app.modelos.Alumno;
 import integrador.sisFacultad.app.modelos.Carrera;
 import integrador.sisFacultad.app.modelos.PlandeEstudio;
@@ -8,17 +9,22 @@ import java.util.ArrayList;
 
 public class Facultad {
     /* "Inscriptos" refiere a personas inscriptas a la facultad pero no a carreras. */
-    private ArrayList<Alumno> inscriptos = new ArrayList<Alumno>(); 
+    private ArrayList<Alumno> inscriptos = new ArrayList<>(); 
     /* Inscriptos refiere a los inscriptos que cursan una carrera */
-    private ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
-    private ArrayList<PlandeEstudio> planes = new ArrayList<PlandeEstudio>();
-    private ArrayList<Carrera> carreras = new ArrayList<Carrera>();
+    private ArrayList<Alumno> alumnos = new ArrayList<>();
+    private ArrayList<PlandeEstudio> planes = new ArrayList<>();
+    private ArrayList<Carrera> carreras = new ArrayList<>();
     
     public Facultad(){
-        PlandeEstudio plan1 = new PlandeEstudio(1,"Sin verificar finales, ni vorrelativos, ni cuatri previos","PlanA",false,false,0);
-        PlandeEstudio plan2 = new PlandeEstudio(2,"Sin verificar finales","PlanB",false,false,0);
+        PlandeEstudio plan1 = new PlandeEstudio(1,"A",false,0,false);
+        PlandeEstudio plan2 = new PlandeEstudio(2,"B",false,0,false);
+        PlandeEstudio plan3 = new PlandeEstudio(3,"C",true,0,false);
+        PlandeEstudio plan4 = new PlandeEstudio(4,"D",false,5,false);
         this.planes.add(plan1);
+        
         this.planes.add(plan2);
+        this.planes.add(plan3);
+        this.planes.add(plan4);
         Carrera car1 = new Carrera(1,"Sistemas","es de grado",plan1,0);
         Carrera car2 = new Carrera(2,"analista","es de pre grado",plan1,0);
         Carrera car3 = new Carrera(3,"contador","es de grado",plan1,0);
@@ -26,9 +32,11 @@ public class Facultad {
         this.carreras.add(car2); 
         this.carreras.add(car3); 
         
-        Alumno alu1 = new Alumno(111,"agustin",24,"dominguez");
-        Alumno alu2 = new Alumno(222,"Sebastian",22,"rodriguez");
+        Alumno alu1 = new Alumno(111,"agustin","dominguez",24,car1);
+        Alumno alu3 = new Alumno(333,"agustin","dominguez",24,car2);
+        Alumno alu2 = new Alumno(222,"Sebastian","rodriguez",22);
         this.alumnos.add(alu1);
+        this.alumnos.add(alu3);
         this.inscriptos.add(alu2);
     }
     
@@ -36,7 +44,14 @@ public class Facultad {
         int id = carreras.size()+1;
         return id;
     }
-    
+    public void modificarPlan(PlandeEstudio viejo_plan,String letra, boolean verificarFinalesCorrelativos, int cuatPrevios,boolean verificarFinales){
+        viejo_plan.setLetra(letra);
+        viejo_plan.setVerificarFinalesCorrelativos(verificarFinalesCorrelativos);
+        viejo_plan.setCuatPrevios(cuatPrevios);
+        viejo_plan.setVerificarFinalesCuatPrevios(verificarFinales);
+        viejo_plan.setDescripcion();
+        
+    }
     public void modificarCarrera(Carrera vieja, String nombre, String descripcion, PlandeEstudio plan, int optativas){
         vieja.setDescripcion(descripcion);
         vieja.setNombre(nombre);
@@ -46,12 +61,21 @@ public class Facultad {
     }
     
     // Parte de gestion de inscriptos
-    public void inscribirPersona(Alumno alumno){
-        if(!inscriptos.contains(alumno)){
-            this.inscriptos.add(alumno);
-        }else{
-            System.out.println("El alumno ya esta inscripto a esta carrera");
+    public boolean inscribirPersona(int doc, String nombre, String apellido,int edad){
+        Alumno persona = new Alumno(doc,nombre,apellido,edad);
+        try{
+            for (int i = 0; i < inscriptos.size(); i++) {
+                if(inscriptos.get(i).getDocumento()==persona.getDocumento()){
+                        System.out.println("El alumno ya esta inscripto a esta carrera");   
+                        throw new inscriptoRegistradoException("El alumno ya esta inscripto a esta carrera");
+                }
+            }        
+        }catch(inscriptoRegistradoException e){
+            return false;
         }
+        this.inscriptos.add(persona);
+        return true;
+        
     }
     
     public void borrarInscripto(Alumno alumno){
@@ -65,7 +89,8 @@ public class Facultad {
         return this.inscriptos;
     }
     // Parte de gestion de planes
-    public void addPlan(PlandeEstudio plan){
+    public void addPlan(String letra, boolean verificarFinalesCorrelativos, int cuatPrevios,boolean verificarFinales){
+        PlandeEstudio plan = new PlandeEstudio(letra,verificarFinalesCorrelativos,cuatPrevios,verificarFinales);
         this.planes.add(plan);
     }
     public void borrarPlan(int id){}
@@ -79,6 +104,16 @@ public class Facultad {
         Carrera carrera = new Carrera(getNewIDcarrera(),nombre,descripcion,plan,optativas);
         this.carreras.add(carrera);
         System.out.println(carreras.toString());
+    }
+    public PlandeEstudio getPlan(PlandeEstudio plan){
+        int a = planes.indexOf(plan);
+        if(a>-1){
+            System.out.println("Se encontró la carrera en el array, indice: "+a);
+            return planes.get(a);
+        }else{
+            System.out.println("No se encontró la carrera en el array, el indice es cualquiera");
+            return null;    
+        }
     }
     public Carrera getCarrera(Carrera carrera){
         int a = carreras.indexOf(carrera);
@@ -107,13 +142,20 @@ public class Facultad {
     }
     
     // Parte de gestion de alumnos
-    public void inscribirAlumno(Alumno alumno){
-        if(!alumnos.contains(alumno)){
-            this.alumnos.add(alumno);
+    public void inscribirAlumnoaCarrera(Alumno inscripto, Carrera carrera){
+        
+        inscripto.setCarrera(this.getCarrera(carrera));
+        inscripto.setFechaCursada();
+        if(!this.alumnos.contains(inscripto)){
+            this.alumnos.add(inscripto);
+            this.inscriptos.remove(inscripto);
+            System.out.println("Se inscribio a la persona a la carrera "+carrera.getNombre());
         }else{
             System.out.println("El alumno ya esta inscripto a esta carrera");
         }
     }
+    
+    
     public void borrarAlumno(Alumno alumno){
         if(alumnos.contains(alumno)){
             this.alumnos.remove(alumno);
@@ -123,6 +165,18 @@ public class Facultad {
     }
     public ArrayList<Alumno> getAllAlumno(){
         return this.alumnos;
+    }
+    
+    public Alumno getInscripto(Alumno inscripto){
+        int a = inscriptos.indexOf(inscripto);
+        if(a>-1){
+            System.out.println("Se encontró a el inscripto en el array, indice: "+a);
+            return inscriptos.get(a);
+        }else{
+            System.out.println("No se encontró a el inscripto en el array, el indice es cualquiera");
+            return null;    
+        }
+        
     }
     public Alumno getAlumno(int doc){
         for(int i=0;i<alumnos.size();i++){

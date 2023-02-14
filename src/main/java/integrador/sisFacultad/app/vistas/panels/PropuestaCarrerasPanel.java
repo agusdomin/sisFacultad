@@ -268,7 +268,7 @@ public class PropuestaCarrerasPanel extends javax.swing.JPanel {
         jLabel8.setText(Integer.toString(carrera.getId()));
         jLabel9.setText(carrera.getNombre());
         jLabel10.setText(carrera.getDescripcion());
-        jLabel11.setText(carrera.getPlan().getNombre());
+        jLabel11.setText(carrera.getPlan().getLetra());
         jLabel12.setText(Integer.toString(carrera.getOptativas()));
     }//GEN-LAST:event_jList1ValueChanged
 

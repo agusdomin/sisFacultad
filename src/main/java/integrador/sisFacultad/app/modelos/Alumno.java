@@ -1,7 +1,8 @@
 package integrador.sisFacultad.app.modelos;
 
 import java.util.ArrayList;
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /*
         Se entiende por "Inscripto" a aquella persona que no esta inscripta 
@@ -17,6 +18,8 @@ public class Alumno{
     private int edad;
     private ArrayList<ArrayList<Cursada>> cursadas;// --> coleccion: misma que coleccion de materias (Carrera)
     private Carrera carrera;
+    private LocalDate inscripto_desde;
+    private LocalDate cursando_desde;
     /* recorrer coleccion ejemplo
         for (int i = 0; i < aList.size(); i++) {
             for (int j = 0; j < aList.get(i).size(); j++) {
@@ -30,13 +33,27 @@ public class Alumno{
         this.nombre=nombre;
         this.apellido=apellido;
         this.carrera=carrera;
+        this.cursando_desde = LocalDate.now();
+        this.inscripto_desde = LocalDate.now();
     }
-    public Alumno(int doc,String nombre,int edad,String apellido){
+    public Alumno(int doc,String nombre,String apellido,int edad){
         this.documento=doc;
         this.nombre=nombre;
         this.apellido=apellido;
+        this.inscripto_desde = LocalDate.now();
     }
-
+    
+    public String getFechaInscripcion(){   
+        return this.inscripto_desde.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    }
+    
+    public String getFechaCursada(){   
+        return this.cursando_desde.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    }
+    public void setFechaCursada(){
+        this.cursando_desde = LocalDate.now();
+    }
+    
     public int getDocumento(){
         return this.documento;
     }
