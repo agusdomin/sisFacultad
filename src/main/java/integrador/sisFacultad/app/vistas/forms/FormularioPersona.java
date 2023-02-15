@@ -1,17 +1,18 @@
 package integrador.sisFacultad.app.vistas.forms;
 
 import integrador.sisFacultad.app.Facultad;
-import integrador.sisFacultad.app.exepciones.inscriptoRegistradoException;
-import integrador.sisFacultad.app.modelos.Carrera;
+import integrador.sisFacultad.app.modelos.Alumno;
 import integrador.sisFacultad.app.vistas.panels.RegistroInscripcionesPanel;
 import javax.swing.JFrame;
 
 
-public class FormularioInscripcion extends javax.swing.JFrame {
+public class FormularioPersona extends javax.swing.JFrame {
     private Facultad controler;
+    private boolean modificar = false;
+    private Alumno persona_mod = null;
     private RegistroInscripcionesPanel parent;
     
-    public FormularioInscripcion(RegistroInscripcionesPanel parent,Facultad controler) {
+    public FormularioPersona(RegistroInscripcionesPanel parent,Facultad controler) {
         initComponents();
         this.controler=controler;
         this.parent=parent;
@@ -19,16 +20,26 @@ public class FormularioInscripcion extends javax.swing.JFrame {
         setResizable(false);
         jLabel4.setVisible(false);
         this.setLocationRelativeTo(null);
+        jButton1.setText("Inscribir");
     }
     
-    public FormularioInscripcion(RegistroInscripcionesPanel parent, Facultad controler, Carrera carrera){
+    public FormularioPersona(RegistroInscripcionesPanel parent, Facultad controler, Alumno inscripto){
         initComponents();
         this.controler=controler;
         this.parent=parent;
+        this.persona_mod=inscripto;
+        this.modificar=true;
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        jButton1.setText("Aceptar cambios");
+        jLabel4.setVisible(false);
+        jTextField1.setText(inscripto.getNombre());
+        jTextField2.setText(inscripto.getApellido());
+        jTextField3.setText(Integer.toString(inscripto.getDocumento()));
+        jTextField4.setText(Integer.toString(inscripto.getEdad()));
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -75,18 +86,11 @@ public class FormularioInscripcion extends javax.swing.JFrame {
 
         jLabel7.setText("edad:");
 
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField1");
-
-        jTextField3.setText("jTextField1");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
-
-        jTextField4.setText("jTextField1");
 
         jLabel3.setText("(sin puntos ni comas)");
 
@@ -124,9 +128,9 @@ public class FormularioInscripcion extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3)))))))
+                                        .addComponent(jLabel3)
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -171,9 +175,19 @@ public class FormularioInscripcion extends javax.swing.JFrame {
         int doc = Integer.parseInt(jTextField3.getText());
         int edad = Integer.parseInt(jTextField4.getText());
         if (!this.controler.inscribirPersona(doc,nombre,apellido,edad)){
-            jLabel4.setVisible(true);
-            this.controler.logInfo("No se inscribió a la persona con DNI: "+doc+" ya que ya está inscripta");
-            this.parent.cargarLogs();
+            if(!modificar){
+                jLabel4.setVisible(true);
+                this.controler.logInfo("No se inscribió a la persona con DNI: "+doc+" ya que ya está inscripta");
+                this.parent.cargarLogs();
+            }else{
+                this.controler.modificarInscripto(persona_mod,nombre,apellido,doc,edad);
+                System.out.println("Se modificó la carrera correctamente");   
+                this.parent.actualizarJList();
+                this.controler.logInfo("Se modifico la carrera "+persona_mod.getNombre());
+                this.parent.cargarLogs();
+                dispose();
+            }
+            
         }else{
             System.out.println("Se inscribio a la persona a la facultad");
             this.controler.logInfo("Se inscribió a la persona con DNI: "+doc+"; NyA: "+nombre+" "+apellido);

@@ -1,8 +1,6 @@
 package integrador.sisFacultad.app;
 
 import integrador.sisFacultad.app.vistas.Home;
-import javax.swing.JFrame;
-import java.awt.*;
 
 public class App 
 {

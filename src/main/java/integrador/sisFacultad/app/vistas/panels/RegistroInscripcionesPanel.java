@@ -2,9 +2,11 @@ package integrador.sisFacultad.app.vistas.panels;
 
 import integrador.sisFacultad.app.Facultad;
 import integrador.sisFacultad.app.modelos.Alumno;
+import integrador.sisFacultad.app.vistas.GestiondeMaterias;
 import integrador.sisFacultad.app.vistas.Home;
-import integrador.sisFacultad.app.vistas.forms.FormularioInscripcion;
+import integrador.sisFacultad.app.vistas.forms.FormularioPersona;
 import integrador.sisFacultad.app.vistas.forms.FormularioInscripcionCarrera;
+import integrador.sisFacultad.app.vistas.forms.FormularioInscripcionMateria;
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.DefaultListCellRenderer;
@@ -113,12 +115,12 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -130,6 +132,7 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -143,7 +146,7 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
         );
 
         setPreferredSize(new java.awt.Dimension(885, 396));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new java.awt.BorderLayout());
 
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -206,6 +209,13 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
 
         jLabel32.setText("Doc:");
 
+        jButton6.setText("Modificar datos");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -234,11 +244,13 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(44, 168, Short.MAX_VALUE))
+                .addGap(44, 233, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(68, 68, 68)
                 .addComponent(jButton2)
                 .addGap(160, 160, 160))
         );
@@ -271,8 +283,9 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(jButton2)
+                    .addComponent(jButton6))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inscriptos sin carrera", jPanel2);
@@ -299,8 +312,6 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-
-        jButton5.setText("Graduar");
 
         jLabel4.setText("Nombre:");
 
@@ -334,6 +345,13 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton7.setText("Abandonar carrera");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -363,30 +381,33 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(109, 109, 109))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4)
-                        .addGap(45, 45, 45)
-                        .addComponent(jButton3)
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton5)
-                        .addGap(84, 84, 84))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGap(157, 157, 157)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(109, 109, 109))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(45, 45, 45)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jButton3)
+                .addGap(99, 99, 99))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel6)
@@ -404,21 +425,17 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(17, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(78, 78, 78)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4))
+                    .addComponent(jButton4)
+                    .addComponent(jButton7))
                 .addGap(32, 32, 32))
         );
 
         jTabbedPane1.addTab("Alumnos cursando", jPanel3);
 
-        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 72, 820, 300));
+        add(jTabbedPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -428,13 +445,12 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //FormularioInscripcionMateria formulario = new FormularioInscripcionMateria(this.controler,this);
-        //formulario.setVisible(true);
-        
+        //Alumno alumno = this.controler.getAlumno((Alumno)this.modelo_alumnos.get(jList2.getSelectedIndex()));
+        //GestiondeMaterias materias = new GestiondeMaterias(this,this.controler,alumno);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FormularioInscripcion formulario = new FormularioInscripcion(this,this.controler);        
+        FormularioPersona formulario = new FormularioPersona(this,this.controler);        
         formulario.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -465,12 +481,23 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jList2ValueChanged
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        Alumno alumno = (Alumno)this.modelo_alumnos.get(jList2.getSelectedIndex()); 
+        FormularioPersona formulario = new FormularioPersona(this,this.controler,alumno);        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jList1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jList1PropertyChange
 
     }//GEN-LAST:event_jList1PropertyChange
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Alumno inscripto = (Alumno)this.modelo_inscriptos.get(jList1.getSelectedIndex()); 
+        FormularioPersona formulario = new FormularioPersona(this,this.controler,inscripto);        
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        //Tengo que mandar al controler el alumno, desinscribirlo, y añadirlo a la lista de inscriptos sin carrera
+    }//GEN-LAST:event_jButton7ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -478,7 +505,8 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -100,12 +100,20 @@ public class Alumno{
         // Verificar la cursada que corresponde a la materia
         // Iterar cursadas.get(materia.getCuatrimestre())
         // Para buscar si alguna cursada corresponde con la materia
+        if(!this.cursadas.get(materia.getCuatri()).isEmpty()){
+            //Puede que la este cursando a esta altura, hay materias en este cuatri
+            this.cursadas.get(materia.getCuatri()).forEach((cursada)->{
+                if(cursada.getMateria().equals(materia)){
+                    ...
+                }
+            });
+            for (int cursada = 0; cursada < cursadas.get(materia.getCuatri()).size(); cursada++) {
+                 if(cursadas.get(materia.getCuatri()).get(cursada).getMateria()==materia){
+                     return cursadas.get(materia.getCuatri()).get(cursada);
+                 }
+             }    
+        }
         
-        for (int cursada = 0; cursada < cursadas.get(materia.getCuatri()).size(); cursada++) {
-             if(cursadas.get(materia.getCuatri()).get(cursada).getMateria()==materia){
-                 return cursadas.get(materia.getCuatri()).get(cursada);
-             }
-         }
         
         System.out.println("El alumno no esta cursando esta materia");
         return null;

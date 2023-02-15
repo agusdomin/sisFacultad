@@ -3,6 +3,7 @@ package integrador.sisFacultad.app;
 import integrador.sisFacultad.app.exepciones.inscriptoRegistradoException;
 import integrador.sisFacultad.app.modelos.Alumno;
 import integrador.sisFacultad.app.modelos.Carrera;
+import integrador.sisFacultad.app.modelos.Materia;
 import integrador.sisFacultad.app.modelos.PlandeEstudio;
 import java.io.BufferedReader;
 import java.io.File;
@@ -43,9 +44,16 @@ public class Facultad {
         this.carreras.add(car2); 
         this.carreras.add(car3); 
         
+        Materia mat1 = new Materia("Programacion 1",1,1,car1);
+        Materia mat2 = new Materia("Programacion 2",2,1,car1);
+        
         Alumno alu1 = new Alumno(111,"agustin","dominguez",24,car1);
         Alumno alu3 = new Alumno(333,"agustin","dominguez",24,car2);
         Alumno alu2 = new Alumno(222,"Sebastian","rodriguez",22);
+        
+        alu1.cursarMateria(mat1);
+        alu1.cursarMateria(mat2);
+        
         this.alumnos.add(alu1);
         this.alumnos.add(alu3);
         this.inscriptos.add(alu2);
@@ -111,7 +119,12 @@ public class Facultad {
         viejo_plan.setCuatPrevios(cuatPrevios);
         viejo_plan.setVerificarFinalesCuatPrevios(verificarFinales);
         viejo_plan.setDescripcion();
-        
+    }
+    public void modificarInscripto(Alumno inscripto,String nombre, String apellido, int doc, int edad){
+        inscripto.setNombre(nombre);
+        inscripto.setApellido(apellido);
+        inscripto.setDocumento(doc);
+        inscripto.setEdad(edad);
     }
     
     
@@ -120,7 +133,6 @@ public class Facultad {
         vieja.setNombre(nombre);
         vieja.setOptativas(optativas);
         vieja.setPlan(plan);
-        System.out.println(carreras.toString());
     }
     
     // Parte de gestion de inscriptos
@@ -243,12 +255,14 @@ public class Facultad {
         }
         
     }
-    public Alumno getAlumno(int doc){
-        for(int i=0;i<alumnos.size();i++){
-            if(this.alumnos.get(i).getDocumento()==doc){
-                return alumnos.get(i);       
-            }
+    public Alumno getAlumno(Alumno alumno){
+        int a = alumnos.indexOf(alumno);
+        if(a>-1){
+            System.out.println("Se encontró a el alumno en el array, indice: "+a);
+            return alumnos.get(a);
+        }else{
+            System.out.println("No se encontró a el inscripto en el array, el indice es cualquiera");
+            return null;    
         }
-        return null;
     }
 }
