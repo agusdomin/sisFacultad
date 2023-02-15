@@ -255,6 +255,8 @@ public class FormularioInscripcionCarrera extends javax.swing.JFrame {
         System.out.println("el inscripto "+this.inscripto.getNombre()+"a inscribir a la carrera "+carrera.getNombre());
         this.controler.inscribirAlumnoaCarrera(this.inscripto,carrera);
         this.parent.actualizarJList();
+        this.controler.logInfo("Se inscribió a "+this.inscripto.getNombre()+" a la carrera "+carrera.getNombre());
+        this.parent.cargarLogs();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -268,7 +270,7 @@ public class FormularioInscripcionCarrera extends javax.swing.JFrame {
         jLabel10.setText(Integer.toString(carrera.getId()));
         jLabel11.setText(carrera.getNombre());
         jLabel12.setText(carrera.getDescripcion());
-        jLabel13.setText(carrera.getPlan().getNombre());
+        jLabel13.setText(carrera.getPlan().getLetra());
         jLabel14.setText(Integer.toString(carrera.getOptativas()));
     }//GEN-LAST:event_jList1ValueChanged
 

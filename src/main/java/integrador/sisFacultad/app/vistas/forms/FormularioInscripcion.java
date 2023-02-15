@@ -172,8 +172,12 @@ public class FormularioInscripcion extends javax.swing.JFrame {
         int edad = Integer.parseInt(jTextField4.getText());
         if (!this.controler.inscribirPersona(doc,nombre,apellido,edad)){
             jLabel4.setVisible(true);
+            this.controler.logInfo("No se inscribió a la persona con DNI: "+doc+" ya que ya está inscripta");
+            this.parent.cargarLogs();
         }else{
             System.out.println("Se inscribio a la persona a la facultad");
+            this.controler.logInfo("Se inscribió a la persona con DNI: "+doc+"; NyA: "+nombre+" "+apellido);
+            this.parent.cargarLogs();
             this.parent.actualizarJListInscriptos();
             dispose();
         }

@@ -144,9 +144,9 @@ public class FormularioPlandeEstudio extends javax.swing.JFrame implements Actio
                     .addComponent(jLabel3)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jCheckBox2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox2)
+                    .addComponent(jLabel4))
                 .addGap(36, 36, 36)
                 .addComponent(jButton1)
                 .addGap(17, 17, 17))
@@ -164,12 +164,16 @@ public class FormularioPlandeEstudio extends javax.swing.JFrame implements Actio
         
         if (!modificar){
             this.controler.addPlan(nombre,verificarFinalesCorrelativos,cuanPrevios,verificarFinales);
-            System.out.println("Se añadio la carrera correctamente");   
+            System.out.println("Se añadio la el plan de estudio correctamente");   
             this.parent.actualizarJList();
+            this.controler.logInfo("Se creó el plan de estudio "+nombre);
+            this.parent.cargarLogs();
         }else{
             this.controler.modificarPlan(plan_mod,nombre,verificarFinalesCorrelativos,cuanPrevios,verificarFinales);
-            System.out.println("Se modificó la carrera correctamente");   
+            System.out.println("Se modifcó el plan de estudio correctamente");   
             this.parent.actualizarJList();
+            this.controler.logInfo("Se modifcó el plan de estudio "+plan_mod.getLetra());
+            this.parent.cargarLogs();
         }
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

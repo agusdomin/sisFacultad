@@ -4,10 +4,21 @@ import integrador.sisFacultad.app.exepciones.inscriptoRegistradoException;
 import integrador.sisFacultad.app.modelos.Alumno;
 import integrador.sisFacultad.app.modelos.Carrera;
 import integrador.sisFacultad.app.modelos.PlandeEstudio;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 
 public class Facultad {
+    private File logs = new File("logs.txt");
+    
     /* "Inscriptos" refiere a personas inscriptas a la facultad pero no a carreras. */
     private ArrayList<Alumno> inscriptos = new ArrayList<>(); 
     /* Inscriptos refiere a los inscriptos que cursan una carrera */
@@ -38,12 +49,62 @@ public class Facultad {
         this.alumnos.add(alu1);
         this.alumnos.add(alu3);
         this.inscriptos.add(alu2);
+        
+        
+        try{
+            if(!this.logs.exists()){    
+                this.logs.createNewFile();
+                System.out.println("Se crea el archivo de logs");
+                this.logInfo("Se crea el archivo de logs");
+            }else{
+                System.out.println("El archivo de logs ya existe");   
+            }
+        }catch(IOException e){
+            System.out.println("Hubo un error al manipular el archivo de logs");
+        }
+        
+        
     }
     
+    
+     public void logInfo(String info){
+        try{ 
+            //Formateo la fecha y tiempo
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            
+            FileWriter writer = new FileWriter(this.logs.getName(),true);
+            writer.write("\n"+now.format(formatoFecha)+"-"+info);
+            writer.close();
+            System.out.println("Se escribió existosamente en el archivo");
+            System.out.println("Texto: "+info);
+        }catch(IOException e){
+            System.out.println("Ocurrió un error al querer escribir en el archivo");
+            e.printStackTrace();
+        }   
+    }
+     
+    private String last;
+    
+    public String cargarLogs() throws IOException{
+        
+        BufferedReader input = new BufferedReader(new FileReader(this.logs.getName()));
+        String line;
+
+        while ((line = input.readLine()) != null) { 
+            last = line;
+        }
+        
+        return last;
+    }
+    
+     
     private int getNewIDcarrera(){
         int id = carreras.size()+1;
         return id;
     }
+    
+    
     public void modificarPlan(PlandeEstudio viejo_plan,String letra, boolean verificarFinalesCorrelativos, int cuatPrevios,boolean verificarFinales){
         viejo_plan.setLetra(letra);
         viejo_plan.setVerificarFinalesCorrelativos(verificarFinalesCorrelativos);
@@ -52,6 +113,8 @@ public class Facultad {
         viejo_plan.setDescripcion();
         
     }
+    
+    
     public void modificarCarrera(Carrera vieja, String nombre, String descripcion, PlandeEstudio plan, int optativas){
         vieja.setDescripcion(descripcion);
         vieja.setNombre(nombre);
@@ -167,6 +230,8 @@ public class Facultad {
         return this.alumnos;
     }
     
+
+        
     public Alumno getInscripto(Alumno inscripto){
         int a = inscriptos.indexOf(inscripto);
         if(a>-1){

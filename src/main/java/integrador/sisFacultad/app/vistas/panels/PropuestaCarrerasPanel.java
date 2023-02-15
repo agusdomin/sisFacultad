@@ -7,6 +7,7 @@ package integrador.sisFacultad.app.vistas.panels;
 import integrador.sisFacultad.app.vistas.forms.FormularioCarrera;
 import integrador.sisFacultad.app.Facultad;
 import integrador.sisFacultad.app.modelos.Carrera;
+import integrador.sisFacultad.app.vistas.Home;
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.DefaultListCellRenderer;
@@ -18,11 +19,13 @@ import javax.swing.JList;
 public class PropuestaCarrerasPanel extends javax.swing.JPanel {
     private Facultad controler;
     private DefaultListModel modelo = new DefaultListModel();
+    private Home parent;
     
             
-    public PropuestaCarrerasPanel(Facultad controler) {
+    public PropuestaCarrerasPanel(Facultad controler, Home home) {
         initComponents();
         this.controler=controler;
+        this.parent=home;
         setSize(885,396);
         setLocation(0,0);
         this.jList1.setModel(modelo);
@@ -60,7 +63,11 @@ public class PropuestaCarrerasPanel extends javax.swing.JPanel {
        this.jList1.setSelectedIndex(0);
         
     };
-
+    
+    public void cargarLogs(){
+        this.parent.cargarTextArea();
+    }
+            
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

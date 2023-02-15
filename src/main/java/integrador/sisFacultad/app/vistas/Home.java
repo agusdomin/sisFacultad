@@ -5,27 +5,28 @@ import integrador.sisFacultad.app.vistas.panels.PropuestaCarrerasPanel;
 import integrador.sisFacultad.app.vistas.panels.GestionPlanesPanel;
 import integrador.sisFacultad.app.Facultad;
 import java.awt.BorderLayout;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Home extends javax.swing.JFrame {
-    private Facultad controler = new Facultad();
-    PropuestaCarrerasPanel carrerras = new PropuestaCarrerasPanel(this.controler);
-    RegistroInscripcionesPanel inscripciones = new RegistroInscripcionesPanel(this.controler);
-    GestionPlanesPanel planes = new GestionPlanesPanel(this.controler);
+    private Facultad controler;
+    private PropuestaCarrerasPanel carrerras;
+    private RegistroInscripcionesPanel inscripciones;
+    private GestionPlanesPanel planes;
     
-    public Home() {
-        initComponents();
-        setResizable(false);
-        this.setLocationRelativeTo(null);
-        contenedor.removeAll();
-        contenedor.add(carrerras, BorderLayout.CENTER);
-        contenedor.revalidate(); 
-        contenedor.repaint();
-    }
     public Home(Facultad controler) {
         initComponents();
-        this.controler= controler;
+        this.controler=controler;
         setResizable(false);
         this.setLocationRelativeTo(null);
+        this.carrerras = new PropuestaCarrerasPanel(this.controler,this);
+        this.inscripciones = new RegistroInscripcionesPanel(this.controler,this);
+        this.planes = new GestionPlanesPanel(this.controler,this);
+
+        //Comienzo de los logs
+        this.controler.logInfo("Se da inicio al sistema de la facultad");
+        this.cargarTextArea();
         
         contenedor.removeAll();
         contenedor.add(carrerras, BorderLayout.CENTER);
@@ -35,7 +36,15 @@ public class Home extends javax.swing.JFrame {
             botonCarrerras.setEnabled(false);
         }
     }
-
+    
+    public void cargarTextArea(){
+        try {
+            this.jTextArea1.append("\n"+this.controler.cargarLogs());
+        } catch (IOException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al cargar los logs en el area de texto");
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

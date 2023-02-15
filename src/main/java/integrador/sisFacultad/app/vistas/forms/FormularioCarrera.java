@@ -196,11 +196,16 @@ public class FormularioCarrera extends javax.swing.JFrame implements ActionListe
             this.controler.addCarrera(nombre,descripcion,plan,optativas);
             System.out.println("Se añadio la carrera correctamente");   
             this.parent.actualizarJList();
+            this.controler.logInfo("Se creo la carrera "+nombre);
+            this.parent.cargarLogs();
         }else{
             this.controler.modificarCarrera(carrera_mod,nombre,descripcion,plan,optativas);
             System.out.println("Se modificó la carrera correctamente");   
             this.parent.actualizarJList();
+            this.controler.logInfo("Se modifico la carrera "+carrera_mod.getNombre());
+            this.parent.cargarLogs();
         }
+        
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
