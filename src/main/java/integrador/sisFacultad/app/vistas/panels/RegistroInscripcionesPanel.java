@@ -2,6 +2,7 @@ package integrador.sisFacultad.app.vistas.panels;
 
 import integrador.sisFacultad.app.Facultad;
 import integrador.sisFacultad.app.modelos.Alumno;
+import integrador.sisFacultad.app.vistas.GestiondeCursadas;
 import integrador.sisFacultad.app.vistas.GestiondeMaterias;
 import integrador.sisFacultad.app.vistas.Home;
 import integrador.sisFacultad.app.vistas.forms.FormularioPersona;
@@ -306,7 +307,7 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
         jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton3.setText("Gestionar a materias");
+        jButton3.setText("Gestionar a cursadas");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -445,8 +446,8 @@ public class RegistroInscripcionesPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //Alumno alumno = this.controler.getAlumno((Alumno)this.modelo_alumnos.get(jList2.getSelectedIndex()));
-        //GestiondeMaterias materias = new GestiondeMaterias(this,this.controler,alumno);
+        Alumno alumno = this.controler.getAlumno((Alumno)this.modelo_alumnos.get(jList2.getSelectedIndex()));
+        GestiondeCursadas cursadas = new GestiondeCursadas(this,this.controler,alumno);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

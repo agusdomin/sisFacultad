@@ -59,7 +59,7 @@ public class FormularioCarrera extends javax.swing.JFrame implements ActionListe
         this.jTextField1.setText(carrera.getNombre());
         this.jTextArea1.setText(carrera.getDescripcion());
         this.jTextField4.setText(Integer.toString(carrera.getOptativas()));
-        
+        this.jTextField4.setText(Integer.toString(carrera.getCantCuatri()));
         jComboBox1.setModel(modelo);
         ArrayList<PlandeEstudio> planes = this.controler.getAllPlanes();
         planes.forEach((plan) -> {
@@ -85,6 +85,8 @@ public class FormularioCarrera extends javax.swing.JFrame implements ActionListe
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,15 +115,13 @@ public class FormularioCarrera extends javax.swing.JFrame implements ActionListe
 
         jLabel7.setText("Cant. de materias optativas:");
 
-        jTextField1.setText("jTextField1");
-
-        jTextField4.setText("jTextField1");
-
         jTextArea1.setColumns(12);
         jTextArea1.setRows(1);
         jScrollPane2.setViewportView(jTextArea1);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setText("Cant. cuatrimestres: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,7 +141,12 @@ public class FormularioCarrera extends javax.swing.JFrame implements ActionListe
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jScrollPane2)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(7, 7, 7)
@@ -177,7 +182,9 @@ public class FormularioCarrera extends javax.swing.JFrame implements ActionListe
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addComponent(jButton1)
                 .addGap(17, 17, 17))
@@ -192,14 +199,15 @@ public class FormularioCarrera extends javax.swing.JFrame implements ActionListe
         PlandeEstudio plan = (PlandeEstudio)jComboBox1.getSelectedItem();
         String descripcion = jTextArea1.getText();
         int optativas = Integer.parseInt(jTextField4.getText());
+        int cant_cuatri = Integer.parseInt(jTextField5.getText());
         if (!modificar){
-            this.controler.addCarrera(nombre,descripcion,plan,optativas);
+            this.controler.addCarrera(nombre,descripcion,plan,cant_cuatri,optativas);
             System.out.println("Se añadio la carrera correctamente");   
             this.parent.actualizarJList();
             this.controler.logInfo("Se creo la carrera "+nombre);
             this.parent.cargarLogs();
         }else{
-            this.controler.modificarCarrera(carrera_mod,nombre,descripcion,plan,optativas);
+            this.controler.modificarCarrera(carrera_mod,nombre,descripcion,plan,cant_cuatri,optativas);
             System.out.println("Se modificó la carrera correctamente");   
             this.parent.actualizarJList();
             this.controler.logInfo("Se modifico la carrera "+carrera_mod.getNombre());
@@ -219,6 +227,7 @@ public class FormularioCarrera extends javax.swing.JFrame implements ActionListe
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -226,6 +235,7 @@ public class FormularioCarrera extends javax.swing.JFrame implements ActionListe
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 
     @Override

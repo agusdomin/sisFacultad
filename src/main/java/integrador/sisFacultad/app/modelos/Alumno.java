@@ -35,6 +35,8 @@ public class Alumno{
         this.carrera=carrera;
         this.cursando_desde = LocalDate.now();
         this.inscripto_desde = LocalDate.now();
+        this.cursadas=new ArrayList();
+        initCursadas();
     }
     public Alumno(int doc,String nombre,String apellido,int edad){
         this.documento=doc;
@@ -86,6 +88,17 @@ public class Alumno{
     }
     
     // Parte de gestion de cursadas
+    
+    private void initCursadas(){
+        /* Tomo la cantidad de cuatrimestres indicado
+        por el tamaño del primer arreglo de dos dimensiones
+        segun la carrera del alumnos
+        */
+        int cant_cuatri = this.carrera.getCantCuatri();
+        for(int cuatri=0;cuatri < cant_cuatri ; cuatri++){
+            this.cursadas.add(new ArrayList<Cursada>());
+        }
+    }
 /*    public boolean isCursando(Materia materia){
     
         for (int cursada = 0; cursada < cursadas.get(materia.getCuatrimestre()).size(); cursada++) {
@@ -100,21 +113,21 @@ public class Alumno{
         // Verificar la cursada que corresponde a la materia
         // Iterar cursadas.get(materia.getCuatrimestre())
         // Para buscar si alguna cursada corresponde con la materia
+        
         if(!this.cursadas.get(materia.getCuatri()).isEmpty()){
             //Puede que la este cursando a esta altura, hay materias en este cuatri
-            this.cursadas.get(materia.getCuatri()).forEach((cursada)->{
-                if(cursada.getMateria().equals(materia)){
-                    ...
+            for (int cursada=0; cursada < this.cursadas.get(materia.getCuatri()).size(); cursada++){        
+                if(this.cursadas.get(materia.getCuatri()).get(cursada).getMateria().equals(materia)){
+                    return this.cursadas.get(materia.getCuatri()).get(cursada);
                 }
-            });
-            for (int cursada = 0; cursada < cursadas.get(materia.getCuatri()).size(); cursada++) {
+            }
+            
+            /*for (int cursada = 0; cursada < cursadas.get(materia.getCuatri()).size(); cursada++) {
                  if(cursadas.get(materia.getCuatri()).get(cursada).getMateria()==materia){
                      return cursadas.get(materia.getCuatri()).get(cursada);
                  }
-             }    
+             }*/    
         }
-        
-        
         System.out.println("El alumno no esta cursando esta materia");
         return null;
     }
@@ -125,6 +138,7 @@ public class Alumno{
           Cursada cursada = new Cursada(materia);
           //Agrego la cursada a la historia del alumno al cuatri requerido
           this.cursadas.get(materia.getCuatri()).add(cursada);
+          System.out.println("Se inscribio al alumno a la materia "+cursada.getMateria().getNombre()+"; cantidad de materias: "+this.cursadas.get(materia.getCuatri()).size());
         }
         System.out.println("El alumno ya estaba cursando esta materia");
     }

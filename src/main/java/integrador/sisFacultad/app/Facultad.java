@@ -12,9 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
+
 
 
 public class Facultad {
@@ -37,15 +36,23 @@ public class Facultad {
         this.planes.add(plan2);
         this.planes.add(plan3);
         this.planes.add(plan4);
-        Carrera car1 = new Carrera(1,"Sistemas","es de grado",plan1,0);
-        Carrera car2 = new Carrera(2,"analista","es de pre grado",plan1,0);
-        Carrera car3 = new Carrera(3,"contador","es de grado",plan1,0);
-        this.carreras.add(car1);    
-        this.carreras.add(car2); 
-        this.carreras.add(car3); 
+        Carrera car1 = new Carrera(1,"Sistemas","es de grado",plan1,10,0);
+        Carrera car2 = new Carrera(2,"analista","es de pre grado",plan1,10,0);
+        Carrera car3 = new Carrera(3,"contador","es de grado",plan1,10,0);
+        
         
         Materia mat1 = new Materia("Programacion 1",1,1,car1);
         Materia mat2 = new Materia("Programacion 2",2,1,car1);
+        Materia mat3 = new Materia("Programacion 3",3,2,car1);
+        Materia mat4 = new Materia("Programacion 4",4,2,car1);
+        car1.addMateria(mat1, mat1.getCuatri());
+        car1.addMateria(mat2, mat2.getCuatri());
+        car1.addMateria(mat3, mat3.getCuatri());
+        car1.addMateria(mat4, mat4.getCuatri());
+        
+        this.carreras.add(car1);    
+        this.carreras.add(car2); 
+        this.carreras.add(car3); 
         
         Alumno alu1 = new Alumno(111,"agustin","dominguez",24,car1);
         Alumno alu3 = new Alumno(333,"agustin","dominguez",24,car2);
@@ -53,6 +60,7 @@ public class Facultad {
         
         alu1.cursarMateria(mat1);
         alu1.cursarMateria(mat2);
+        alu1.cursarMateria(mat3);
         
         this.alumnos.add(alu1);
         this.alumnos.add(alu3);
@@ -128,11 +136,12 @@ public class Facultad {
     }
     
     
-    public void modificarCarrera(Carrera vieja, String nombre, String descripcion, PlandeEstudio plan, int optativas){
+    public void modificarCarrera(Carrera vieja, String nombre, String descripcion, PlandeEstudio plan,int cant_cuatri, int optativas){
         vieja.setDescripcion(descripcion);
         vieja.setNombre(nombre);
         vieja.setOptativas(optativas);
         vieja.setPlan(plan);
+        vieja.setCantCuatri(cant_cuatri);
     }
     
     // Parte de gestion de inscriptos
@@ -175,8 +184,8 @@ public class Facultad {
         return this.planes;
     }
     // Parte de gestion de carreras
-    public void addCarrera(String nombre,String descripcion,PlandeEstudio plan,int optativas){
-        Carrera carrera = new Carrera(getNewIDcarrera(),nombre,descripcion,plan,optativas);
+    public void addCarrera(String nombre,String descripcion,PlandeEstudio plan,int cant_cuatri,int optativas){
+        Carrera carrera = new Carrera(getNewIDcarrera(),nombre,descripcion,plan,cant_cuatri,optativas);
         this.carreras.add(carrera);
         System.out.println(carreras.toString());
     }

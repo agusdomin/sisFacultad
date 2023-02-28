@@ -30,7 +30,9 @@ public class Materia {
     public void addCorrelativa(Materia materia){
         this.correlatividades.add(materia);
     }
-    
+    public Materia getMateria(){
+        return this;
+    }
     public ArrayList<Materia> getAllCorrelativas(){
         return this.correlatividades;
     }
