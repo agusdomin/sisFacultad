@@ -1,5 +1,7 @@
 package integrador.sisFacultad.app.modelos;
 
+import java.util.Random;
+
 public class Cursada {
     private Materia materia;
     private int notaParcial=0;
@@ -13,6 +15,28 @@ public class Cursada {
         this.materia=materia;
         this.notaFinal=notaFinal;
         this.notaParcial=notaParcial;
+    }
+    
+    public void rendirExamen(){
+        Random rand = new Random();
+        int nota_max=10;
+        if(!isRegular()){
+            int nota_parcial = rand.nextInt(nota_max)+1; 
+            this.setParcial(nota_parcial);
+            if(isRegular()){
+                int nota_final = rand.nextInt(nota_max)+1;
+                this.setFinal(nota_final);
+            }else{
+                this.setFinal(0);
+            }    
+        }else{
+            if(!isAprobada()){
+                int nota_final = rand.nextInt(nota_max)+1;
+                this.setFinal(nota_final);
+            }
+        }
+        
+        
     }
     public int getCuatrimestre(){
         return this.materia.getCuatri();
@@ -36,17 +60,20 @@ public class Cursada {
         return this.notaFinal;
     }
     public boolean isRegular(){
-        if(this.notaParcial>=6){
+        if(this.notaParcial>=4){
             return true;
         }else{
             return false;
         }
     }
     public boolean isAprobada(){
-        if(this.notaFinal>=4){
-            return true;
-        }else{
-            return false;
+        if(isRegular()){
+            if(this.notaFinal>=4){
+                return true;
+            }else{
+                return false;
+            }    
         }
+        return false;
     }
 }

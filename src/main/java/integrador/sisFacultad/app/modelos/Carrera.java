@@ -95,6 +95,17 @@ public class Carrera {
         }
         return 0;
     }
+    
+    public Materia getMateria(int id){
+        for (int cuatri = 0; cuatri < materias.size(); cuatri++) {
+            for (int materia = 0; materia < materias.get(cuatri).size(); materia++){
+                if(materias.get(cuatri).get(materia).getId()==id){
+                    return materias.get(cuatri).get(materia);
+                }  
+            }           
+        }
+        return null;
+    }
     public void addMateria(Materia materia, int cuatrimestre){    
         if(!isMateriaContained(materia)){
             //Agrego la materia al cuatri requerido
@@ -109,5 +120,5 @@ public class Carrera {
     public ArrayList<ArrayList<Materia>> getAllMaterias(){
         return this.materias;
     }
-    public void getMateria(){}    
+    //public Materia getMateria(){}    
 }

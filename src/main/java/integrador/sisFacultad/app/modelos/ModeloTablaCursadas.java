@@ -47,27 +47,32 @@ public class ModeloTablaCursadas extends AbstractTableModel
     {
         return lista.size();
     }
- 
+    
     @Override
     public Object getValueAt(int rowIndex, int columnIndex)
     {
-        Cursada row = lista.get(rowIndex);
+        Cursada cursada = lista.get(rowIndex);
         if(0 == columnIndex) {
-            return row.getMateria().getId();
+            return cursada.getMateria().getId();
         }
         else if(1 == columnIndex) {
-            return row.getMateria().getNombre();
+            return cursada.getMateria().getNombre();
         }
         else if(2 == columnIndex) {
-            return row.getMateria().getCuatri();
+            return cursada.getMateria().getCuatri();
         }
         else if(3 == columnIndex) {
-            return row.getParcial();
+            return cursada.getParcial();
         }
         else if(4 == columnIndex) {
-            return row.getFinal();
+            return cursada.getFinal();
         }
-        return null;
+        
+        return cursada;
+    }
+    
+    public Cursada getCursada(int row){
+        return lista.get(row);
     }
 
 }

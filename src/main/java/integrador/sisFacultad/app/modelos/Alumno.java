@@ -3,6 +3,7 @@ package integrador.sisFacultad.app.modelos;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
 /*
         Se entiende por "Inscripto" a aquella persona que no esta inscripta 
@@ -38,13 +39,20 @@ public class Alumno{
         this.cursadas=new ArrayList();
         initCursadas();
     }
+    
     public Alumno(int doc,String nombre,String apellido,int edad){
         this.documento=doc;
         this.nombre=nombre;
         this.apellido=apellido;
         this.inscripto_desde = LocalDate.now();
     }
-    
+    public void rendirExamenes(){
+        this.cursadas.forEach((cuatri)->{
+            cuatri.forEach((cursada)->{
+                cursada.rendirExamen();
+            });
+        });
+    }
     public String getFechaInscripcion(){   
         return this.inscripto_desde.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
@@ -118,6 +126,7 @@ public class Alumno{
             //Puede que la este cursando a esta altura, hay materias en este cuatri
             for (int cursada=0; cursada < this.cursadas.get(materia.getCuatri()).size(); cursada++){        
                 if(this.cursadas.get(materia.getCuatri()).get(cursada).getMateria().equals(materia)){
+                    System.out.println("El alumno ya esta cursando esta materia");
                     return this.cursadas.get(materia.getCuatri()).get(cursada);
                 }
             }
@@ -132,15 +141,19 @@ public class Alumno{
         return null;
     }
     
-    public void cursarMateria(Materia materia){    
+    public boolean cursarMateria(Materia materia){    
         if((getCursada(materia)==null)){
-          // Se agrega una nueva cursada a la materia requerida
-          Cursada cursada = new Cursada(materia);
-          //Agrego la cursada a la historia del alumno al cuatri requerido
-          this.cursadas.get(materia.getCuatri()).add(cursada);
-          System.out.println("Se inscribio al alumno a la materia "+cursada.getMateria().getNombre()+"; cantidad de materias: "+this.cursadas.get(materia.getCuatri()).size());
+          if(this.carrera.getPlan().verificarCondiciones(materia, this)){
+            // Se agrega una nueva cursada a la materia requerida
+            Cursada cursada = new Cursada(materia);
+            //Agrego la cursada a la historia del alumno al cuatri requerido
+            this.cursadas.get(materia.getCuatri()).add(cursada);
+            System.out.println("Se inscribio al alumno a la materia "+cursada.getMateria().getNombre());    
+            return true;
+          }
+          return false;
         }
-        System.out.println("El alumno ya estaba cursando esta materia");
+        return false;
     }
     
     public void abandonarCursada(Materia materia){

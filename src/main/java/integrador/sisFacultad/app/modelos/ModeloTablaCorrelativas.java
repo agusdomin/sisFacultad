@@ -3,7 +3,7 @@ package integrador.sisFacultad.app.modelos;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
-public class ModeloTablaMaterias extends AbstractTableModel
+public class ModeloTablaCorrelativas extends AbstractTableModel
 {
     private final ArrayList<Materia> lista= new ArrayList<>();
      
@@ -14,13 +14,12 @@ public class ModeloTablaMaterias extends AbstractTableModel
         Integer.class, String.class, Integer.class
     };
  
-    public ModeloTablaMaterias(ArrayList<ArrayList<Materia>> materias)
-    {
-        for(int cuatri=0; cuatri < materias.size();cuatri++){
-            for(int materia=0 ; materia < materias.get(cuatri).size();materia++){
-                this.lista.add(materias.get(cuatri).get(materia));
-                
-            }
+    public ModeloTablaCorrelativas(ArrayList<Materia> materias){
+    
+        if(! materias.isEmpty()){
+            for(int materia=0 ; materia < materias.size();materia++){
+                this.lista.add(materias.get(materia));
+            }     
         }
     }
      

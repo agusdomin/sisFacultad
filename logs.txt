@@ -55,3 +55,155 @@
 2023-02-27 23:45:42-Se da inicio al sistema de la facultad
 2023-02-27 23:48:10-Se da inicio al sistema de la facultad
 2023-02-27 23:49:01-Se da inicio al sistema de la facultad
+2023-02-27 23:50:35-Se da inicio al sistema de la facultad
+2023-02-27 23:52:00-Se da inicio al sistema de la facultad
+2023-02-28 00:00:39-Se da inicio al sistema de la facultad
+2023-02-28 00:21:39-Se da inicio al sistema de la facultad
+2023-02-28 15:21:39-Se da inicio al sistema de la facultad
+2023-02-28 15:52:19-Se da inicio al sistema de la facultad
+2023-02-28 15:54:36-Se da inicio al sistema de la facultad
+2023-02-28 15:58:30-Se da inicio al sistema de la facultad
+2023-02-28 15:59:30-Se da inicio al sistema de la facultad
+2023-02-28 20:26:14-Se da inicio al sistema de la facultad
+2023-02-28 20:30:17-Se da inicio al sistema de la facultad
+2023-02-28 20:31:56-Se da inicio al sistema de la facultad
+2023-02-28 21:22:40-Se da inicio al sistema de la facultad
+2023-02-28 22:25:30-Se da inicio al sistema de la facultad
+2023-02-28 22:26:23-Se da inicio al sistema de la facultad
+2023-02-28 22:27:12-Se da inicio al sistema de la facultad
+2023-02-28 22:28:48-Se da inicio al sistema de la facultad
+2023-02-28 22:31:51-Se da inicio al sistema de la facultad
+2023-02-28 22:32:12-Se da inicio al sistema de la facultad
+2023-02-28 22:51:42-Se da inicio al sistema de la facultad
+2023-02-28 22:52:01-Se creo la materia prog22
+2023-02-28 22:54:14-Se da inicio al sistema de la facultad
+2023-02-28 22:54:22-Se creo la materia adsasd
+2023-02-28 22:57:12-Se da inicio al sistema de la facultad
+2023-02-28 22:57:18-Se creo la materia asdads
+2023-02-28 22:58:14-Se da inicio al sistema de la facultad
+2023-02-28 23:55:35-Se creo la materia asddasas
+2023-02-28 23:59:01-Se da inicio al sistema de la facultad
+2023-02-28 23:59:05-El alumno agustin comienza a cursar Programacion 4
+2023-03-01 00:12:30-Se da inicio al sistema de la facultad
+2023-03-01 00:12:34-No puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 00:12:39-El alumno agustin comienza a cursar Programacion 4
+2023-03-01 00:12:41-No puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 00:14:22-Se da inicio al sistema de la facultad
+2023-03-01 00:14:27-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 00:25:55-Se da inicio al sistema de la facultad
+2023-03-01 00:26:13-El alumno agustin comienza a cursar Programacion 4
+2023-03-01 00:27:30-Se da inicio al sistema de la facultad
+2023-03-01 00:27:31-Se rindieron exámenes
+2023-03-01 00:30:39-Se da inicio al sistema de la facultad
+2023-03-01 00:30:47-Se rindieron exámenes
+2023-03-01 00:30:51-Se rindieron exámenes
+2023-03-01 00:30:57-El alumno agustin comienza a cursar Programacion 4
+2023-03-01 00:31:01-Se rindieron exámenes
+2023-03-01 00:31:41-Se da inicio al sistema de la facultad
+2023-03-01 00:31:43-Se rindieron exámenes
+2023-03-01 00:32:15-Se da inicio al sistema de la facultad
+2023-03-01 00:32:23-El alumno agustin comienza a cursar Programacion 4
+2023-03-01 00:32:27-Se rindieron exámenes
+2023-03-01 00:32:45-Se rindieron exámenes
+2023-03-01 00:32:54-Se rindieron exámenes
+2023-03-01 00:35:29-Se da inicio al sistema de la facultad
+2023-03-01 00:35:30-Se rindieron exámenes
+2023-03-01 00:35:41-Se rindieron exámenes
+2023-03-01 00:35:59-Se rindieron exámenes
+2023-03-01 00:36:04-Se rindieron exámenes
+2023-03-01 00:37:07-Se da inicio al sistema de la facultad
+2023-03-01 00:37:14-El alumno agustin comienza a cursar Programacion 4
+2023-03-01 00:37:15-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 00:37:21-Se rindieron exámenes
+2023-03-01 00:37:26-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 00:37:29-Se rindieron exámenes
+2023-03-01 00:37:32-El alumno agustin pudo graduarse de la carrera Sistemas
+2023-03-01 00:38:32-Se da inicio al sistema de la facultad
+2023-03-01 00:38:36-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 18:09:31-Se da inicio al sistema de la facultad
+2023-03-01 18:10:58-El alumno agustin comienza a cursar Programacion 4
+2023-03-01 18:11:02-Se rindieron exámenes
+2023-03-01 18:40:38-Se da inicio al sistema de la facultad
+2023-03-01 18:45:23-Se da inicio al sistema de la facultad
+2023-03-01 18:46:39-Se da inicio al sistema de la facultad
+2023-03-01 18:51:02-Se da inicio al sistema de la facultad
+2023-03-01 18:52:24-Se da inicio al sistema de la facultad
+2023-03-01 18:54:49-Se da inicio al sistema de la facultad
+2023-03-01 18:54:53-Se añade la materia Programacion 1 como correlativa de la materia Programacion 3
+2023-03-01 18:56:55-Se da inicio al sistema de la facultad
+2023-03-01 18:56:59-Se añade la materia Programacion 1 como correlativa de la materia Programacion 2
+2023-03-01 18:59:35-Se da inicio al sistema de la facultad
+2023-03-01 18:59:41-Se añade la materia Programacion 1 como correlativa de la materia Programacion 2
+2023-03-01 18:59:43-Esta materia ya es correlativa de Programacion 2
+2023-03-01 18:59:45-Se añade la materia Programacion 4 como correlativa de la materia Programacion 2
+2023-03-01 19:01:53-Se da inicio al sistema de la facultad
+2023-03-01 19:02:53-Se da inicio al sistema de la facultad
+2023-03-01 19:03:03-Se añade la materia Programacion 3 como correlativa de la materia Programacion 3
+2023-03-01 19:03:12-Se añade la materia Programacion 2 como correlativa de la materia Programacion 3
+2023-03-01 19:03:13-Se añade la materia Programacion 1 como correlativa de la materia Programacion 3
+2023-03-01 19:03:14-Se añade la materia Programacion 4 como correlativa de la materia Programacion 3
+2023-03-01 19:05:12-Se da inicio al sistema de la facultad
+2023-03-01 19:07:41-Se da inicio al sistema de la facultad
+2023-03-01 19:09:34-Se da inicio al sistema de la facultad
+2023-03-01 19:09:39-No puede añadirse ya que se trata de la misma materia en cuestion
+2023-03-01 19:09:44-Se añade la materia Programacion 2 como correlativa de la materia Programacion 1
+2023-03-01 19:09:45-Se añade la materia Programacion 3 como correlativa de la materia Programacion 1
+2023-03-01 19:09:46-Se añade la materia Programacion 4 como correlativa de la materia Programacion 1
+2023-03-01 19:11:23-Se da inicio al sistema de la facultad
+2023-03-01 19:12:06-Se da inicio al sistema de la facultad
+2023-03-01 19:12:07-Se rindieron exámenes
+2023-03-01 19:12:15-Se añade la materia Programacion 1 como correlativa de la materia Programacion 3
+2023-03-01 19:12:31-Se creo la materia prog 5
+2023-03-01 19:12:51-El alumno agustin comienza a cursar prog 5
+2023-03-01 19:15:42-El alumno agustin comienza a cursar Programacion 4
+2023-03-01 19:15:43-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 19:17:36-Se da inicio al sistema de la facultad
+2023-03-01 19:17:41-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 19:17:48-El alumno agustin comienza a cursar Programacion 4
+2023-03-01 19:17:49-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 19:18:01-Se creo la materia asdasd
+2023-03-01 19:18:11-El alumno agustin comienza a cursar asdasd
+2023-03-01 19:18:12-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 19:18:17-Se rindieron exámenes
+2023-03-01 19:18:22-Se rindieron exámenes
+2023-03-01 19:18:25-Se rindieron exámenes
+2023-03-01 19:18:28-El alumno agustin pudo graduarse de la carrera Sistemas
+2023-03-01 19:18:42-Se da inicio al sistema de la facultad
+2023-03-01 19:18:44-Se rindieron exámenes
+2023-03-01 19:18:51-Se creo la materia adasd
+2023-03-01 19:18:55-El alumno agustin comienza a cursar adasd
+2023-03-01 19:18:57-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 19:19:03-Se rindieron exámenes
+2023-03-01 19:19:12-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 19:19:17-Se rindieron exámenes
+2023-03-01 19:19:22-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 19:19:24-Se rindieron exámenes
+2023-03-01 19:19:27-Se rindieron exámenes
+2023-03-01 19:21:28-Se da inicio al sistema de la facultad
+2023-03-01 19:21:29-Se rindieron exámenes
+2023-03-01 19:21:29-Se rindieron exámenes
+2023-03-01 19:21:35-Se rindieron exámenes
+2023-03-01 19:33:51-Se da inicio al sistema de la facultad
+2023-03-01 19:33:54-Se rindieron exámenes
+2023-03-01 19:33:55-Se rindieron exámenes
+2023-03-01 19:34:01-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-01 19:34:07-El alumno agustin comienza a cursar Programacion 4
+2023-03-01 19:34:10-Se rindieron exámenes
+2023-03-01 19:34:12-Se rindieron exámenes
+2023-03-01 19:34:16-El alumno agustin pudo graduarse de la carrera Sistemas
+2023-03-01 19:34:27-Se da inicio al sistema de la facultad
+2023-03-01 19:40:18-Se da inicio al sistema de la facultad
+2023-03-01 19:40:27-El alumno agustin comienza a cursar Programacion 4
+2023-03-01 19:42:10-Se da inicio al sistema de la facultad
+2023-03-01 19:42:22-Se creo la materia asasdd
+2023-03-02 15:59:23-Se da inicio al sistema de la facultad
+2023-03-02 15:59:32-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-02 15:59:34-Se rindieron exámenes
+2023-03-02 15:59:35-Se rindieron exámenes
+2023-03-02 15:59:35-Se rindieron exámenes
+2023-03-02 15:59:39-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-02 15:59:40-El alumno agustin comienza a cursar Programacion 4
+2023-03-02 15:59:41-El alumno agustin no puede graduarse porque no aprobo todas las materias de la carrera
+2023-03-02 15:59:52-Se rindieron exámenes
+2023-03-02 15:59:53-Se rindieron exámenes
+2023-03-02 15:59:55-El alumno agustin pudo graduarse de la carrera Sistemas

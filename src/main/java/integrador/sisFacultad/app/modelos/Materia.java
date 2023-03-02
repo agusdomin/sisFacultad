@@ -15,6 +15,7 @@ public class Materia {
         this.id=id;
         this.carrera=carrera;
         this.cuatrimestre=cuatrimestre;
+        this.correlatividades= new ArrayList<>();
     }
 
     public void setId(int id){ this.id=id; }

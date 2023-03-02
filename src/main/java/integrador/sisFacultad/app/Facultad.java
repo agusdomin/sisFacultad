@@ -100,21 +100,24 @@ public class Facultad {
         }   
     }
      
-    private String last;
-    
+    private String ultima_linea;
     public String cargarLogs() throws IOException{
         
         BufferedReader input = new BufferedReader(new FileReader(this.logs.getName()));
-        String line;
+        String linea;
 
-        while ((line = input.readLine()) != null) { 
-            last = line;
+        while ((linea = input.readLine()) != null) { 
+            ultima_linea = linea;
         }
         
-        return last;
+        return ultima_linea;
     }
     
-     
+    public void cargarNotas(){
+        this.alumnos.forEach((alumno)->{
+            alumno.rendirExamenes();
+        });
+    }
     private int getNewIDcarrera(){
         int id = carreras.size()+1;
         return id;
@@ -142,6 +145,12 @@ public class Facultad {
         vieja.setOptativas(optativas);
         vieja.setPlan(plan);
         vieja.setCantCuatri(cant_cuatri);
+    }
+    
+    public void modificarMateria(Materia vieja, String nombre, int id,int cuatri){
+        vieja.setNombre(nombre);
+        vieja.setCuatri(cuatri);
+        vieja.setId(id);
     }
     
     // Parte de gestion de inscriptos
