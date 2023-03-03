@@ -18,7 +18,7 @@ public class Carrera {
         this.nOptativas=optativas;
         this.cant_cuatri=cant_cuatri;
         this.plan=plan;
-        this.materias=new ArrayList();
+        this.materias=new ArrayList<>();
         initMaterias();
     }
     

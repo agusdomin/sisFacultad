@@ -207,3 +207,10 @@
 2023-03-02 15:59:52-Se rindieron exámenes
 2023-03-02 15:59:53-Se rindieron exámenes
 2023-03-02 15:59:55-El alumno agustin pudo graduarse de la carrera Sistemas
+2023-03-02 16:14:28-Se da inicio al sistema de la facultad
+2023-03-02 16:14:56-Se creo la carrera turismo
+2023-03-02 16:15:02-Se inscribió a Sebastian a la carrera turismo
+2023-03-02 16:16:12-Se da inicio al sistema de la facultad
+2023-03-02 16:16:19-Se creo la carrera ar
+2023-03-02 16:16:27-Se inscribió a Sebastian a la carrera ar
+2023-03-02 16:17:39-Se da inicio al sistema de la facultad

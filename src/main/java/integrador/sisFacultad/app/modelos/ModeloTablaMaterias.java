@@ -15,13 +15,15 @@ public class ModeloTablaMaterias extends AbstractTableModel
     };
  
     public ModeloTablaMaterias(ArrayList<ArrayList<Materia>> materias)
-    {
-        for(int cuatri=0; cuatri < materias.size();cuatri++){
-            for(int materia=0 ; materia < materias.get(cuatri).size();materia++){
-                this.lista.add(materias.get(cuatri).get(materia));
-                
+    {   
+        if(materias!= null){
+            for(int cuatri=0; cuatri < materias.size();cuatri++){
+                for(int materia=0 ; materia < materias.get(cuatri).size();materia++){
+                    this.lista.add(materias.get(cuatri).get(materia));
+                }
             }
         }
+        
     }
      
     @Override

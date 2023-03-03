@@ -16,12 +16,14 @@ public class ModeloTablaCursadas extends AbstractTableModel
  
     public ModeloTablaCursadas(ArrayList<ArrayList<Cursada>> cursadas)
     {
-        for(int cuatri=0; cuatri < cursadas.size();cuatri++){
-            for(int materia=0 ; materia < cursadas.get(cuatri).size();materia++){
-                this.lista.add(cursadas.get(cuatri).get(materia));
-                
+         if( cursadas != null){
+            for(int cuatri=0; cuatri < cursadas.size();cuatri++){
+                for(int materia=0 ; materia < cursadas.get(cuatri).size();materia++){
+                    this.lista.add(cursadas.get(cuatri).get(materia));
+
+                }
             }
-        }
+         }
     }
      
     @Override

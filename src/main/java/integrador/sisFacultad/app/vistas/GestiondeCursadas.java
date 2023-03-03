@@ -237,7 +237,7 @@ public class GestiondeCursadas extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if(!this.controler.getCarrera(this.carrera).getPlan().verificarGraduacion(this.controler.getCarrera(this.carrera).getAllMaterias(), this.alumno.getAllCursadas())){
-            this.controler.logInfo("El alumno "+this.alumno.getNombre()+" no puede graduarse porque no aprobo todas las materias de la carrera");
+            this.controler.logInfo("El alumno "+this.alumno.getNombre()+" no puede graduarse porque no aprobo/curso todas las materias de la carrera");
             this.parent.cargarLogs();
         }else{
             this.controler.logInfo("El alumno "+this.alumno.getNombre()+" pudo graduarse de la carrera "+this.carrera.getNombre());
